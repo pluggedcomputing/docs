@@ -90,5 +90,35 @@ pygmentCodeFences = true
 
 [[menu.main]]
     name = "Contribuições"
-    url = "page/contribution/"
+    identifier = "contribuitions"
     weight = 3
+
+[[menu.main]]
+    parent = "contribuitions"
+    name = "Baixando o Projeto"
+    url = "post/contribuitions/download_the_project"
+    weight = 1    
+
+[[menu.main]]
+    parent = "contribuitions"
+    name = "Iniciando Emulador"
+    url = "post/contribuitions/starting_emulator"
+    weight = 2  
+
+[[menu.main]]
+    parent = "contribuitions"
+    name = "Realizando alterações"
+    url = "post/contribuitions/starting_emulator"
+    weight = 3
+
+[[menu.main]]
+    parent = "contribuitions"
+    name = "Criando Pull Requests"
+    url = "post/contribuitions/starting_emulator"
+    weight = 4
+
+[[menu.main]]
+    parent = "contribuitions"
+    name = "Boas Práticas"
+    url = "post/contribuitions/starting_emulator"
+    weight = 5
