@@ -1,6 +1,6 @@
 ---
 title: Testando
-date: 2019-09-27
+date: 2019-09-26
 ---
 
 Para testar, Abra o Propt de Comando do Windows e siga as instruções:

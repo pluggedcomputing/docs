@@ -84,7 +84,7 @@ pygmentCodeFences = true
 [[menu.main]]
     parent = "environment"
     name = "Testando"
-    url = "page/environment-setting/testing"
+    url = "page/environment-setting/testing.md"
     weight = 6
     
 
