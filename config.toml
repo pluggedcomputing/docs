@@ -108,7 +108,7 @@ pygmentCodeFences = true
 [[menu.main]]
     parent = "contribuitions"
     name = "Realizando alterações"
-    url = "post/contribuitions/starting_emulator"
+    url = "post/contribuitions/making_changes"
     weight = 3
 
 [[menu.main]]
