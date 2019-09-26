@@ -22,6 +22,7 @@ Para configurar o ambiente para esse projeto, você vai precisar ter instalado a
       * Android SDK Tools
       * Intel x86 Emulator Accelerator (HAXM installer)
    3. Prescione **Aplicar**, espere o download e a instalação do SDK.
+   
 * Caso tenha optado pelo Command line tools only, basta extrair mover a pasta baixada para **C:\Users\<Seu Usuario>\AppData\Local\Android\sdk**
       
 > A instalação do **Yarn** e do **Visual Studio Code** não não são obrigatorias, porém são altamente recomendadas.
@@ -45,7 +46,9 @@ Os exemplos utilizados aqui serão baseados no **Windows 10**.   Caso seu sistem
 8. Crie uma nova variavel com o nome de **CLASS_PATH**
 9. No campo **Valor da variável**, insira o seu caminho da instalação do JDK acrescentando **\lib;.** no final
    * Se preferir, pode utilizar a variavel **JAVA_HOME** criada anteriormente, basta inserir: **__%JAVA_HOME%\lib;.__** 
+
 > Não esqueça de por **";."** no final, isso vai permitir que o sistema acesse todas as pastas dentro da pasta lib.
+
 10. Clique em OK;
 11. Agora procure pela variavel **Path** e clique para edita-la.
 12. Clique no botão **Novo** e insira:
@@ -61,7 +64,9 @@ Os exemplos utilizados aqui serão baseados no **Windows 10**.   Caso seu sistem
 3. No campo **Nome da variável** insira:
    * ANDROID_HOME
 4. No campo **Valor da variável**, insira o seu caminho da instalação do seu ANDROID SDK
+
 >Se você não alterou o caminho durante a instalação, ele será parecido com isso **C:\Users\<Seu Usuario>\AppData\Local\Android\sdk**
+
 5. Clique em OK;
 6. Agora procure pela variavel **Path** e clique para edita-la.
 7. Clique no botão **Novo** e insira:
@@ -69,7 +74,9 @@ Os exemplos utilizados aqui serão baseados no **Windows 10**.   Caso seu sistem
    * %ANDROID_HOME%\platform-tools
    * %ANDROID_HOME%\tools
    * %ANDROID_HOME%\tools\bin
+
 >A ordem é importante, obedeça o exemplo.
+
 8. Clique em OK e Aplicar alterações quando solicitado.
 
 #### Outras Variaveis
@@ -107,9 +114,9 @@ Para testar, Abra o Propt de Comando do Windows e siga as instruções:
 
 #### Java 
 
- `> java -version`
+`> java -version`
  
- Se tudo der certo, você verá uma mensagem desse tipo: 
+Se tudo der certo, você verá uma mensagem desse tipo: 
 
 ```
 java version "1.8.0_202"
@@ -119,29 +126,29 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.202-b08, mixed mode)
 
 #### Node JS
 
- `> node -v`
+`> node -v`
 
- Se tudo der certo, você verá uma mensagem desse tipo:
+Se tudo der certo, você verá uma mensagem desse tipo:
 
- `v8.12.0`
+`v8.12.0`
 
 #### ADB
 
- `> adb --version`
+`> adb --version`
  
- Se tudo der certo, você verá uma mensagem desse tipo: 
+Se tudo der certo, você verá uma mensagem desse tipo: 
 
- `Android Debug Bridge version 1.0.41
+```Android Debug Bridge version 1.0.41
 Version 29.0.1-5644136
 Installed as C:\Users\<Seu Usuario>\AppData\Local\Android\Sdk\platform-tools\adb.exe
-`
+```
 
 #### Emulator
 
- `> emulator -version`
+`> emulator -version`
 
- Se tudo der certo, você verá uma mensagem desse tipo: 
- `
+Se tudo der certo, você verá uma mensagem desse tipo: 
+```
 Android emulator version 29.0.11.0 (build_id 5598178) (CL:N/A)
 Copyright (C) 2006-2017 The Android Open Source Project and many others.
 This program is a derivative of the QEMU CPU emulator (www.qemu.org).
@@ -153,13 +160,13 @@ This program is a derivative of the QEMU CPU emulator (www.qemu.org).
   This program is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU General Public License for more details.`
+  GNU General Public License for more details.```
 
 #### React Native
 
- `> react-native -v`
+`> react-native -v`
 
- Se tudo der certo, você verá uma mensagem desse tipo: 
+Se tudo der certo, você verá uma mensagem desse tipo: 
 
-`react-native-cli: 2.0.1
-react-native: n/a - not inside a React Native project directory`
+```react-native-cli: 2.0.1
+react-native: n/a - not inside a React Native project directory```
