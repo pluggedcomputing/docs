@@ -64,9 +64,7 @@ Os exemplos utilizados aqui serão baseados no **Windows 10**.   Caso seu sistem
 3. No campo **Nome da variável** insira:
    * ANDROID_HOME
 4. No campo **Valor da variável**, insira o seu caminho da instalação do seu ANDROID SDK
-
 >Se você não alterou o caminho durante a instalação, ele será parecido com isso **C:\Users\<Seu Usuario>\AppData\Local\Android\sdk**
-
 5. Clique em OK;
 6. Agora procure pela variavel **Path** e clique para edita-la.
 7. Clique no botão **Novo** e insira:
@@ -74,9 +72,7 @@ Os exemplos utilizados aqui serão baseados no **Windows 10**.   Caso seu sistem
    * %ANDROID_HOME%\platform-tools
    * %ANDROID_HOME%\tools
    * %ANDROID_HOME%\tools\bin
-
 >A ordem é importante, obedeça o exemplo.
-
 8. Clique em OK e Aplicar alterações quando solicitado.
 
 #### Outras Variaveis
