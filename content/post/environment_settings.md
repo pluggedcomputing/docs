@@ -22,13 +22,17 @@ Para configurar o ambiente para esse projeto, você vai precisar ter instalado a
       * Android SDK Tools
       * Intel x86 Emulator Accelerator (HAXM installer)
    3. Prescione **Aplicar**, espere o download e a instalação do SDK.
+   
 * Caso tenha optado pelo Command line tools only, basta extrair mover a pasta baixada para **C:\Users\<Seu Usuario>\AppData\Local\Android\sdk**
       
 > A instalação do **Yarn** e do **Visual Studio Code** não não são obrigatorias, porém são altamente recomendadas.
+
 ### Configurando Variaveis de Ambiente
+
 Os exemplos utilizados aqui serão baseados no **Windows 10**.   Caso seu sistema operacional seja Linux ou macOS, você pode consultar os seguintes tutoriais: [Linux](https://docs.rocketseat.dev/ambiente-react-native/android/linux#configurando-sdk-do-android-no-linux) | [macOS](https://docs.rocketseat.dev/ambiente-react-native/android/macos#configurando-sdk-do-android-no-macos)
 
 #### Variaveis JAVA
+
 1. Localize o diretório de instalação Java
 >Se você não alterou o caminho durante a instalação, ele será parecido com isso **__C:\Program Files\Java\jdk1.8.0_65__**
 2. Vá para **Painel de controle** > **Sistema** > **Configurações avançadas do sistema**
@@ -42,7 +46,9 @@ Os exemplos utilizados aqui serão baseados no **Windows 10**.   Caso seu sistem
 8. Crie uma nova variavel com o nome de **CLASS_PATH**
 9. No campo **Valor da variável**, insira o seu caminho da instalação do JDK acrescentando **\lib;.** no final
    * Se preferir, pode utilizar a variavel **JAVA_HOME** criada anteriormente, basta inserir: **__%JAVA_HOME%\lib;.__** 
+
 > Não esqueça de por **";."** no final, isso vai permitir que o sistema acesse todas as pastas dentro da pasta lib.
+
 10. Clique em OK;
 11. Agora procure pela variavel **Path** e clique para edita-la.
 12. Clique no botão **Novo** e insira:
@@ -52,6 +58,7 @@ Os exemplos utilizados aqui serão baseados no **Windows 10**.   Caso seu sistem
 >Você precisará fechar e abrir novamente qualquer janela de comando que estava aberta antes de fazer estas alterações, já que não há como recarregar variáveis de ambiente de um prompt de comando ativo. Se as alterações não entrarem em vigor depois de abrir novamente a janela de comando, reinicie o Windows.
 
 #### Variaveis ANDROID SDK
+
 1. Acesse as configurações de variaveis de ambiente do seu sistema. (Siga até o passo 3 da seção anterioror: **Variaveis JAVA**)
 2. Sob **Variáveis do sistema**, clique em **Novo**
 3. No campo **Nome da variável** insira:
@@ -69,6 +76,7 @@ Os exemplos utilizados aqui serão baseados no **Windows 10**.   Caso seu sistem
 8. Clique em OK e Aplicar alterações quando solicitado.
 
 #### Outras Variaveis
+
 Também é interessante que você tenha algumas outras varivais no seu **Path** do sistema, para poder eventualmente utilizar recusos de linha de comando dos sistemas. Normalmente, essas variavis são configuradas automaticamente na hora da instalação do sistema, porém não custa nada conferir não é mesmo??
 
 1. Agora, acesse o Painel de Controle do Windows, abra o item “Sistema”, clique em “Configurações avançadas do sistema”, selecione “Variáveis de ambiente”
@@ -81,16 +89,19 @@ Também é interessante que você tenha algumas outras varivais no seu **Path** 
 * __Chocolatey__: C:\ProgramData\chocolatey\bin
 
 ### Instalando Dependencias
+
 Abra o Propt de Comando do Windows e insira os seguintes comandos:
+
 #### React Native
-```cmd
-> yarn global add react-native-cli
-````
+
+`> yarn global add react-native-cli`
+
 >Caso não tenha instalado o Yarn, você pode usar: **npm install -g react-native-cli**
+
 #### Aceitando Licensas do Emulador
-```cmd
-> sdkmanager --licenses
-````
+
+`> sdkmanager --licenses`
+
 Presione **Y** em todas as opções para aceitar as licensas.
 
 ### Testando
@@ -98,44 +109,44 @@ Presione **Y** em todas as opções para aceitar as licensas.
 Para testar, Abra o Propt de Comando do Windows e siga as instruções:
 
 #### Java 
- ```cmd
- > java -version
- ````
+
+`> java -version`
  
- Se tudo der certo, você verá uma mensagem desse tipo: 
- ```cmd
+Se tudo der certo, você verá uma mensagem desse tipo: 
+
+```
 java version "1.8.0_202"
 Java(TM) SE Runtime Environment (build 1.8.0_202-b08)
 Java HotSpot(TM) 64-Bit Server VM (build 25.202-b08, mixed mode)
-````
-
+```
 #### Node JS
- ```cmd
- > node -v
- ````
 
- Se tudo der certo, você verá uma mensagem desse tipo: 
- ```cmd
+`> node -v`
+
+Se tudo der certo, você verá uma mensagem desse tipo:
+
+```
 v8.12.0
-````
-
+```
 #### ADB
- ```cmd
- > adb --version
- ````
- Se tudo der certo, você verá uma mensagem desse tipo: 
- ```cmd
+
+`> adb --version`
+ 
+Se tudo der certo, você verá uma mensagem desse tipo: 
+
+```
 Android Debug Bridge version 1.0.41
 Version 29.0.1-5644136
 Installed as C:\Users\<Seu Usuario>\AppData\Local\Android\Sdk\platform-tools\adb.exe
-````
+```
 
 #### Emulator
- ```cmd
- > emulator -v
- ````
- Se tudo der certo, você verá uma mensagem desse tipo: 
- ```cmd
+
+`> emulator -version`
+
+Se tudo der certo, você verá uma mensagem desse tipo: 
+
+```
 Android emulator version 29.0.11.0 (build_id 5598178) (CL:N/A)
 Copyright (C) 2006-2017 The Android Open Source Project and many others.
 This program is a derivative of the QEMU CPU emulator (www.qemu.org).
@@ -148,13 +159,14 @@ This program is a derivative of the QEMU CPU emulator (www.qemu.org).
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
-````
+```
 #### React Native
- ```cmd
- > react-native -v
- ````
- Se tudo der certo, você verá uma mensagem desse tipo: 
- ```cmd
+
+`> react-native -v`
+
+Se tudo der certo, você verá uma mensagem desse tipo: 
+
+```
 react-native-cli: 2.0.1
 react-native: n/a - not inside a React Native project directory
-````
+```
