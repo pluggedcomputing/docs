@@ -114,11 +114,11 @@ pygmentCodeFences = true
 [[menu.main]]
     parent = "contribuitions"
     name = "Criando Pull Requests"
-    url = "post/contribuitions/starting_emulator"
+    url = "post/contribuitions/create_pull_request"
     weight = 4
 
 [[menu.main]]
     parent = "contribuitions"
     name = "Boas Práticas"
-    url = "post/contribuitions/starting_emulator"
+    url = "post/contribuitions/good_habits"
     weight = 5
