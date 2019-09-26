@@ -2,7 +2,7 @@ baseurl = "https://pluggedcomputing.gitlab.io/page"
 contentdir    = "content"
 layoutdir     = "layouts"
 publishdir    = "public"
-title = "Beautiful Hugo"
+title = "Plugged Computing"
 canonifyurls  = true
 
 DefaultContentLanguage = "en"
@@ -14,7 +14,7 @@ pygmentCodeFences = true
 #googleAnalytics = "XXX"
 
 [Params]
-  subtitle = "Hugo Blog Template for GitLab Pages"
+  subtitle = "Documentação de Referencia"
   logo = "img/avatar-icon.png"
   favicon = "img/favicon.ico"
   dateFormat = "January 2, 2006"
@@ -34,61 +34,43 @@ pygmentCodeFences = true
 #  desc = "Hexagon"
 
 [Author]
-  name = "Some Person"
-  email = "youremail@domain.com"
-  facebook = "username"
-  googleplus = "+username" # or xxxxxxxxxxxxxxxxxxxxx
-  gitlab = "username"
-  github = "username"
-  twitter = "username"
-  reddit = "username"
-  linkedin = "username"
-  xing = "username"
-  stackoverflow = "users/XXXXXXX/username"
-  snapchat = "username"
-  instagram = "username"
-  youtube = "user/username" # or channel/channelname
-  soundcloud = "username"
-  spotify = "username"
-  bandcamp = "username"
-  itchio = "username"
-  keybase = "username"
-
+  name = "Matheus Barbosa de Oliveira"
+  email = "matheus.barbosa@dcx.ufpb.br"
+  gitlab = "https://gitlab.com/barbosamaatheus"
+  github = "https://github.com/barbosamaatheus"
+  twitter = "https://twitter.com/barbosamaatheus"
+  instagram = "@barbosamaatheus"
 
 [[menu.main]]
-    name = "Blog"
-    url = ""
-    weight = 1
-
-[[menu.main]]
-    name = "About"
+    name = "Inicio"
     url = "page/about/"
-    weight = 3
-
-[[menu.main]]
-    identifier = "samples"
-    name = "Samples"
-    weight = 2
-
-[[menu.main]]
-    parent = "samples"
-    name = "Big Image Sample"
-    url = "post/2017-03-07-bigimg-sample"
     weight = 1
 
 [[menu.main]]
-    parent = "samples"
-    name = "Math Sample"
-    url = "post/2017-03-05-math-sample"
+    identifier = "environment"
+    name = "Configurações de Ambiente"
+    url = "page/environment/"
     weight = 2
 
 [[menu.main]]
-    parent = "samples"
-    name = "Code Sample"
-    url = "post/2016-03-08-code-sample"
+    parent = "environment"
+    name = "Java JDK"
+    url = "post/environment_java"
+    weight = 1
+
+[[menu.main]]
+    parent = "environment"
+    name = "Android SDK"
+    url = "post/environment_android"
+    weight = 2
+
+[[menu.main]]
+    parent = "environment"
+    name = "Outras"
+    url = "post/post/environment_others"
     weight = 3
 
 [[menu.main]]
-    name = "Tags"
-    url = "tags"
+    name = "Contribuições"
+    url = "page/contribution/"
     weight = 3
