@@ -123,22 +123,23 @@ java version "1.8.0_202"
 Java(TM) SE Runtime Environment (build 1.8.0_202-b08)
 Java HotSpot(TM) 64-Bit Server VM (build 25.202-b08, mixed mode)
 ```
-
 #### Node JS
 
 `> node -v`
 
 Se tudo der certo, você verá uma mensagem desse tipo:
 
-`v8.12.0`
-
+```
+v8.12.0
+```
 #### ADB
 
 `> adb --version`
  
 Se tudo der certo, você verá uma mensagem desse tipo: 
 
-```Android Debug Bridge version 1.0.41
+```
+Android Debug Bridge version 1.0.41
 Version 29.0.1-5644136
 Installed as C:\Users\<Seu Usuario>\AppData\Local\Android\Sdk\platform-tools\adb.exe
 ```
@@ -148,6 +149,7 @@ Installed as C:\Users\<Seu Usuario>\AppData\Local\Android\Sdk\platform-tools\adb
 `> emulator -version`
 
 Se tudo der certo, você verá uma mensagem desse tipo: 
+
 ```
 Android emulator version 29.0.11.0 (build_id 5598178) (CL:N/A)
 Copyright (C) 2006-2017 The Android Open Source Project and many others.
@@ -160,13 +162,15 @@ This program is a derivative of the QEMU CPU emulator (www.qemu.org).
   This program is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU General Public License for more details.```
-
+  GNU General Public License for more details.
+```
 #### React Native
 
 `> react-native -v`
 
 Se tudo der certo, você verá uma mensagem desse tipo: 
 
-```react-native-cli: 2.0.1
-react-native: n/a - not inside a React Native project directory```
+```
+react-native-cli: 2.0.1
+react-native: n/a - not inside a React Native project directory
+```
