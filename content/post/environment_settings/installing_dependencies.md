@@ -1,6 +1,6 @@
 ---
 title: Instalando Dependencias
-date: 2019-09-26
+date: 2019-08-24
 ---
 Abra o Propt de Comando do Windows e insira os seguintes comandos:
 

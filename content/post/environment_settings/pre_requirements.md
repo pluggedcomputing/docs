@@ -1,6 +1,6 @@
 ---
 title: Pré Requisitos
-date: 2019-09-22
+date: 2019-08-20
 ---
 Para configurar o ambiente para esse projeto, você vai precisar ter instalado alguns aplicativos:
 

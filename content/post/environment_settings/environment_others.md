@@ -1,6 +1,6 @@
 ---
 title: Outras Variaveis
-date: 2019-09-25
+date: 2019-08-23
 ---
 Também é interessante que você tenha algumas outras varivais no seu **Path** do sistema, para poder eventualmente utilizar recusos de linha de comando dos sistemas. Normalmente, essas variavis são configuradas automaticamente na hora da instalação do sistema, porém não custa nada conferir não é mesmo??
 
