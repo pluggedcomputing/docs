@@ -49,43 +49,42 @@ pygmentCodeFences = true
 [[menu.main]]
     identifier = "environment"
     name = "Configurações de Ambiente"
-    url = "page/environment/"
     weight = 2
 
 [[menu.main]]
     parent = "environment"
     name = "Pré Requisitos"
-    url = "post/pre_requirements"
+    url = "page/environment-setting/pre_requirements"
     weight = 1
 
 [[menu.main]]
     parent = "environment"
     name = "Java JDK"
-    url = "post/environment_java"
+    url = "page/environment-setting/environment_java"
     weight = 2
 
 [[menu.main]]
     parent = "environment"
     name = "Android SDK"
-    url = "post/environment_android"
+    url = "page/environment-setting/environment_android"
     weight = 3
 
 [[menu.main]]
     parent = "environment"
     name = "Outras Variaveis"
-    url = "post/environment_others"
+    url = "page/environment-setting/environment_others"
     weight = 4
 
 [[menu.main]]
     parent = "environment"
     name = "Instalando Dependencias"
-    url = "post/installing_dependencies"
+    url = "page/environment-setting/installing_dependencies"
     weight = 5
 
 [[menu.main]]
     parent = "environment"
     name = "Testando"
-    url = "post/testing"
+    url = "page/environment-setting/testing"
     weight = 5
     
 
