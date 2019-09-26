@@ -43,7 +43,7 @@ pygmentCodeFences = true
 
 [[menu.main]]
     name = "Inicio"
-    url = "page/about/"
+    url = ""
     weight = 1
 
 [[menu.main]]
