@@ -1,6 +1,6 @@
 ---
 title: Configuração de Ambiente
-subtitle: Why you'd want to hang out with me
+subtitle: Guia de configuração de variaveis de ambeinte
 comments: false
 ---
 

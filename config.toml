@@ -5,7 +5,7 @@ publishdir    = "public"
 title = "Plugged Computing"
 canonifyurls  = true
 
-DefaultContentLanguage = "en"
+DefaultContentLanguage = "pt"
 theme = "beautifulhugo"
 metaDataFormat = "yaml"
 pygmentsUseClasses = true
@@ -36,10 +36,10 @@ pygmentCodeFences = true
 [Author]
   name = "Matheus Barbosa de Oliveira"
   email = "matheus.barbosa@dcx.ufpb.br"
-  gitlab = "https://gitlab.com/barbosamaatheus"
-  github = "https://github.com/barbosamaatheus"
-  twitter = "https://twitter.com/barbosamaatheus"
-  instagram = "@barbosamaatheus"
+  gitlab = "barbosamaatheus"
+  github = "barbosamaatheus"
+  twitter = "barbosamaatheus"
+  instagram = "barbosamaatheus"
 
 [[menu.main]]
     name = "Inicio"
@@ -54,21 +54,40 @@ pygmentCodeFences = true
 
 [[menu.main]]
     parent = "environment"
+    name = "Pré Requisitos"
+    url = "post/pre_requirements"
+    weight = 1
+
+[[menu.main]]
+    parent = "environment"
     name = "Java JDK"
     url = "post/environment_java"
-    weight = 1
+    weight = 2
 
 [[menu.main]]
     parent = "environment"
     name = "Android SDK"
     url = "post/environment_android"
-    weight = 2
+    weight = 3
 
 [[menu.main]]
     parent = "environment"
-    name = "Outras"
-    url = "post/post/environment_others"
-    weight = 3
+    name = "Outras Variaveis"
+    url = "post/environment_others"
+    weight = 4
+
+[[menu.main]]
+    parent = "environment"
+    name = "Instalando Dependencias"
+    url = "post/installing_dependencies"
+    weight = 5
+
+[[menu.main]]
+    parent = "environment"
+    name = "Testando"
+    url = "post/testing"
+    weight = 5
+    
 
 [[menu.main]]
     name = "Contribuições"
