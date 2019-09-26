@@ -15,7 +15,7 @@ pygmentCodeFences = true
 
 [Params]
   subtitle = "Documentação de Referencia"
-  logo = "img/avatar-icon.png"
+  logo = "img/logo.png"
   favicon = "img/favicon.ico"
   dateFormat = "January 2, 2006"
   commit = false
