@@ -5,7 +5,7 @@
 body {
   font-family: 'Lora', 'Times New Roman', serif;
   font-size: 18px;
-  color: #00275C;
+  color: #404040;
   position: relative;
   background: #FFF;
 }
@@ -113,6 +113,7 @@ img {
 .navbar-custom .navbar-brand,
 .navbar-custom .nav li a {
   font-weight: 800;
+  color: #808080;
 }
 
 .navbar-custom .navbar-brand:hover,
