@@ -42,9 +42,9 @@ pygmentCodeFences = true
   instagram = "barbosamaatheus"
 
 [[menu.main]]
-    name = "Inicio"
-    url = ""
-    weight = 1
+    name = "Blog"
+    url = "/post"
+    weight = 2
 
 [[menu.main]]
     identifier = "environment"
@@ -113,8 +113,8 @@ pygmentCodeFences = true
 
 [[menu.main]]
     parent = "contribuitions"
-    name = "Criando Pull Requests"
-    url = "post/contribuitions/create_pull_request"
+    name = "Criando Merge Requests"
+    url = "post/contribuitions/create_merge_request"
     weight = 4
 
 [[menu.main]]
