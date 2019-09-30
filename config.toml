@@ -54,37 +54,37 @@ pygmentCodeFences = true
 [[menu.main]]
     parent = "environment"
     name = "Pré Requisitos"
-    url = "post/environment_settings/pre_requirements"
+    url = "page/environment_settings/pre_requirements"
     weight = 1
 
 [[menu.main]]
     parent = "environment"
     name = "Java JDK"
-    url = "post/environment_settings/environment_java"
+    url = "page/environment_settings/environment_java"
     weight = 2
 
 [[menu.main]]
     parent = "environment"
     name = "Android SDK"
-    url = "post/environment_settings/environment_android"
+    url = "page/environment_settings/environment_android"
     weight = 3
 
 [[menu.main]]
     parent = "environment"
     name = "Outras Variaveis"
-    url = "post/environment_settings/environment_others"
+    url = "page/environment_settings/environment_others"
     weight = 4
 
 [[menu.main]]
     parent = "environment"
     name = "Instalando Dependencias"
-    url = "post/environment_settings/installing_dependencies"
+    url = "page/environment_settings/installing_dependencies"
     weight = 5
 
 [[menu.main]]
     parent = "environment"
     name = "Testando"
-    url = "post/environment_settings/testing"
+    url = "page/environment_settings/testing"
     weight = 6
     
 
@@ -96,29 +96,29 @@ pygmentCodeFences = true
 [[menu.main]]
     parent = "contribuitions"
     name = "Baixando o Projeto"
-    url = "post/contribuitions/download_the_project"
+    url = "page/contribuitions/download_the_project"
     weight = 1    
 
 [[menu.main]]
     parent = "contribuitions"
     name = "Iniciando Emulador"
-    url = "post/contribuitions/starting_emulator"
+    url = "page/contribuitions/starting_emulator"
     weight = 2  
 
 [[menu.main]]
     parent = "contribuitions"
     name = "Realizando alterações"
-    url = "post/contribuitions/making_changes"
+    url = "page/contribuitions/making_changes"
     weight = 3
 
 [[menu.main]]
     parent = "contribuitions"
     name = "Criando Merge Requests"
-    url = "post/contribuitions/create_merge_request"
+    url = "page/contribuitions/create_merge_request"
     weight = 4
 
 [[menu.main]]
     parent = "contribuitions"
     name = "Boas Práticas"
-    url = "post/contribuitions/good_habits"
+    url = "page/contribuitions/good_habits"
     weight = 5
