@@ -1,4 +1,4 @@
-baseurl = "https://pluggedcomputing.gitlab.io/page"
+baseurl = "https://pluggedcomputing.gitlab.io"
 contentdir    = "content"
 layoutdir     = "layouts"
 publishdir    = "public"
@@ -15,7 +15,7 @@ pygmentCodeFences = true
 
 [Params]
   subtitle = "Documentação de Referencia"
-  logo = "img/avatar-icon.png"
+  logo = "img/logo.png"
   favicon = "img/favicon.ico"
   dateFormat = "January 2, 2006"
   commit = false
@@ -42,9 +42,9 @@ pygmentCodeFences = true
   instagram = "barbosamaatheus"
 
 [[menu.main]]
-    name = "Inicio"
-    url = ""
-    weight = 1
+    name = "Blog"
+    url = "/post"
+    weight = 2
 
 [[menu.main]]
     identifier = "environment"
@@ -54,41 +54,71 @@ pygmentCodeFences = true
 [[menu.main]]
     parent = "environment"
     name = "Pré Requisitos"
-    url = "page/environment-setting/pre_requirements"
+    url = "page/environment_settings/pre_requirements"
     weight = 1
 
 [[menu.main]]
     parent = "environment"
     name = "Java JDK"
-    url = "page/environment-setting/environment_java"
+    url = "page/environment_settings/environment_java"
     weight = 2
 
 [[menu.main]]
     parent = "environment"
     name = "Android SDK"
-    url = "page/environment-setting/environment_android"
+    url = "page/environment_settings/environment_android"
     weight = 3
 
 [[menu.main]]
     parent = "environment"
     name = "Outras Variaveis"
-    url = "page/environment-setting/environment_others"
+    url = "page/environment_settings/environment_others"
     weight = 4
 
 [[menu.main]]
     parent = "environment"
     name = "Instalando Dependencias"
-    url = "page/environment-setting/installing_dependencies"
+    url = "page/environment_settings/installing_dependencies"
     weight = 5
 
 [[menu.main]]
     parent = "environment"
     name = "Testando"
-    url = "page/environment-setting/testing"
+    url = "page/environment_settings/testing"
     weight = 6
     
 
 [[menu.main]]
     name = "Contribuições"
-    url = "page/contribution/"
+    identifier = "contribuitions"
     weight = 3
+
+[[menu.main]]
+    parent = "contribuitions"
+    name = "Baixando o Projeto"
+    url = "page/contribuitions/download_the_project"
+    weight = 1    
+
+[[menu.main]]
+    parent = "contribuitions"
+    name = "Iniciando Emulador"
+    url = "page/contribuitions/starting_emulator"
+    weight = 2  
+
+[[menu.main]]
+    parent = "contribuitions"
+    name = "Realizando alterações"
+    url = "page/contribuitions/making_changes"
+    weight = 3
+
+[[menu.main]]
+    parent = "contribuitions"
+    name = "Criando Merge Requests"
+    url = "page/contribuitions/create_merge_request"
+    weight = 4
+
+[[menu.main]]
+    parent = "contribuitions"
+    name = "Boas Práticas"
+    url = "page/contribuitions/good_habits"
+    weight = 5

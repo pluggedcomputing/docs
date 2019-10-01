@@ -1,6 +1,8 @@
 ---
 title: Pré Requisitos
-date: 2019-09-22
+subtitle: Guia para instalação das ferramentas necessarias para configuração do ambiente de desenvolvimento.
+comments: false
+date: 2019-08-20
 ---
 Para configurar o ambiente para esse projeto, você vai precisar ter instalado alguns aplicativos:
 

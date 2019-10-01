@@ -1,6 +1,8 @@
 ---
 title: Variaveis ANDROID SDK
-date: 2019-09-24
+subtitle: Guia de configuração completo para variaveis ANDROID SDK
+comments: false
+date: 2019-08-22
 ---
 Os exemplos utilizados aqui serão baseados no **Windows 10**.   Caso seu sistema operacional seja Linux ou macOS, você pode consultar os seguintes tutoriais: [Linux](https://docs.rocketseat.dev/ambiente-react-native/android/linux#configurando-sdk-do-android-no-linux) | [macOS](https://docs.rocketseat.dev/ambiente-react-native/android/macos#configurando-sdk-do-android-no-macos)
 

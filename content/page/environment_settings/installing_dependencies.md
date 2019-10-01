@@ -1,6 +1,8 @@
 ---
 title: Instalando Dependencias
-date: 2019-09-26
+subtitle: Guia para instalação de algumas dependencias necessarias no projeto
+comments: false
+date: 2019-08-24
 ---
 Abra o Propt de Comando do Windows e insira os seguintes comandos:
 
