@@ -1,5 +1,5 @@
 ---
-title: Extrenções Uteis para o Visual Studio Code.
+title: Extensões Uteis para o Visual Studio Code.
 date: 2019-09-30
 ---
 
