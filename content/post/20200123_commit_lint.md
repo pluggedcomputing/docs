@@ -18,9 +18,9 @@ onde:
 | --------- | ---------------------------------------------------------------- |
 | build     | commites que disparam builds                                     |
 | ci        | commites para configuração de integração continua                |
-| chore     | tarefas. (não utilizado no nosso projeto)                        |
+| chore     | commites referentes a tarefas de gestao de projeto               |
 | docs      | commites referentes a algum tipo de documentação                 |
-| feat      | commites em parceirias. (não utilizado no nosso projeto)         |
+| feat      | commites de novas features                                       |
 | fix       | commites para correção de bugs em desenvolvimento ou em produção |
 | perf      | commites relacionados a performace do codigo e/ou da aplicação   |
 | refactor  | commites de refatoração de codigo                                |
