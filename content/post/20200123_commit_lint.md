@@ -25,7 +25,7 @@ onde:
 | perf      | commites relacionados a performace do codigo e/ou da aplicação   |
 | refactor  | commites de refatoração de codigo                                |
 | revert    | commites para reverter alguma alteração no codigo                |
-| style     | commites para inserção/atualização do estilo da aplicação        |
+| style     | commites para alterações na formatação do codigo, sem alteracoes no codigo        |
 | test      | commits para adição/atualização de scripts de teste              |
 
 `scope`: deve ser o sufixo da branch que é o mesmo id do issue da alteração.
