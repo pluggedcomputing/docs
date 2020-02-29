@@ -18,14 +18,14 @@ onde:
 | --------- | ---------------------------------------------------------------- |
 | build     | commites que disparam builds                                     |
 | ci        | commites para configuração de integração continua                |
-| chore     | tarefas. (não utilizado no nosso projeto)                        |
+| chore     | commites referentes a tarefas de gestao de projeto               |
 | docs      | commites referentes a algum tipo de documentação                 |
-| feat      | commites em parceirias. (não utilizado no nosso projeto)         |
+| feat      | commites de novas features                                       |
 | fix       | commites para correção de bugs em desenvolvimento ou em produção |
 | perf      | commites relacionados a performace do codigo e/ou da aplicação   |
 | refactor  | commites de refatoração de codigo                                |
 | revert    | commites para reverter alguma alteração no codigo                |
-| style     | commites para inserção/atualização do estilo da aplicação        |
+| style     | commites para alterações na formatação do codigo, sem alteracoes no codigo        |
 | test      | commits para adição/atualização de scripts de teste              |
 
 `scope`: deve ser o sufixo da branch que é o mesmo id do issue da alteração.
