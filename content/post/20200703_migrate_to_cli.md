@@ -1,5 +1,5 @@
 ---
-title: Migrar ReactNative Expo para CLI
+title: Migrar Expo para ReactNative CLI
 date: 2020-07-03
 ---
 
@@ -131,4 +131,4 @@ date: 2020-07-03
 
 ## 16: Caso ocorra o erro da imagem a baixo, execute o comando `npx react-native start`
 
-![Image erro run android](src/assets/images/erro_run_android.jpeg)
+![Image erro run android](https://user-images.githubusercontent.com/5674956/59913382-ab528400-9435-11e9-9215-77fcbd5b9b98.jpeg)
