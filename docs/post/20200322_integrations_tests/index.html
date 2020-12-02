@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Como construir testes de integração no backend Node.JS</title>
+  <meta property="og:title" content="Como construir testes de integração no backend Node.JS" />
+  <meta name="twitter:title" content="Como construir testes de integração no backend Node.JS" />
+  <meta name="description" content="Jest &#43; Supertest a combinação perfeita para testes de integração
+ Pré requsiitos Neste post iremos focar exclusivamente da configuração, escrita e execução dos testes automatizados. Por tando, assumimos aqui que você tem os conhecimentos basicos necessarios para construir uma aplicação em Node.js.
+Para fins didaticos, mostramos aqui como estruturamos o nosso projeto de exemplo:
+| __tests__ // Diretorio onde os testes serão escritos └─── integrations └─── setup.js | src └─── controllers // Funções da controllers do express route └─── models // Modelos do banco de dados └─── services // Regras de negócio └─── routes.">
+  <meta property="og:description" content="Jest &#43; Supertest a combinação perfeita para testes de integração
+ Pré requsiitos Neste post iremos focar exclusivamente da configuração, escrita e execução dos testes automatizados. Por tando, assumimos aqui que você tem os conhecimentos basicos necessarios para construir uma aplicação em Node.js.
+Para fins didaticos, mostramos aqui como estruturamos o nosso projeto de exemplo:
+| __tests__ // Diretorio onde os testes serão escritos └─── integrations └─── setup.js | src └─── controllers // Funções da controllers do express route └─── models // Modelos do banco de dados └─── services // Regras de negócio └─── routes.">
+  <meta name="twitter:description" content="Jest &#43; Supertest a combinação perfeita para testes de integração
+ Pré requsiitos Neste post iremos focar exclusivamente da configuração, escrita e execução dos testes automatizados. Por tando, …">
+  <meta name="author" content="Matheus Barbosa de Oliveira"/>
+  <link href='https://pluggedcomputing.gitlab.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="https://pluggedcomputing.gitlab.io/img/logo.png" />
+  <meta name="twitter:image" content="https://pluggedcomputing.gitlab.io/img/logo.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@barbosamaatheus" />
+  <meta name="twitter:creator" content="@barbosamaatheus" />
+  <meta property="og:url" content="https://pluggedcomputing.gitlab.io/post/20200322_integrations_tests/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Plugged Computing" />
+
+  <meta name="generator" content="Hugo 0.73.0" />
+  <link rel="canonical" href="https://pluggedcomputing.gitlab.io/post/20200322_integrations_tests/" />
+  <link rel="alternate" href="https://pluggedcomputing.gitlab.io/index.xml" type="application/rss+xml" title="Plugged Computing">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://pluggedcomputing.gitlab.io/css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://pluggedcomputing.gitlab.io/css/pygment_highlights.css" />
+  <link rel="stylesheet" href="https://pluggedcomputing.gitlab.io/css/highlight.min.css" />
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://pluggedcomputing.gitlab.io">Plugged Computing</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="https://pluggedcomputing.gitlab.io/post">Blog</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">Configurações de Ambiente</a>
+              <div class="navlinks-children">
+                
+                  <a href="https://pluggedcomputing.gitlab.io/page/environment_settings/pre_requirements">Pré Requisitos</a>
+                
+                  <a href="https://pluggedcomputing.gitlab.io/page/environment_settings/environment_java">Java JDK</a>
+                
+                  <a href="https://pluggedcomputing.gitlab.io/page/environment_settings/environment_android">Android SDK</a>
+                
+                  <a href="https://pluggedcomputing.gitlab.io/page/environment_settings/environment_others">Outras Variaveis</a>
+                
+                  <a href="https://pluggedcomputing.gitlab.io/page/environment_settings/installing_dependencies">Instalando Dependencias</a>
+                
+                  <a href="https://pluggedcomputing.gitlab.io/page/environment_settings/testing">Testando</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">Contribuições</a>
+              <div class="navlinks-children">
+                
+                  <a href="https://pluggedcomputing.gitlab.io/page/contribuitions/download_the_project">Baixando o Projeto</a>
+                
+                  <a href="https://pluggedcomputing.gitlab.io/page/contribuitions/starting_emulator">Iniciando Emulador</a>
+                
+                  <a href="https://pluggedcomputing.gitlab.io/page/contribuitions/making_changes">Realizando alterações</a>
+                
+                  <a href="https://pluggedcomputing.gitlab.io/page/contribuitions/create_merge_request">Criando Merge Requests</a>
+                
+                  <a href="https://pluggedcomputing.gitlab.io/page/contribuitions/good_habits">Boas Práticas</a>
+                
+              </div>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        
+          <a title="Plugged Computing" href="https://pluggedcomputing.gitlab.io">
+            <img class="avatar-img" src="https://pluggedcomputing.gitlab.io/img/logo.png" alt="Plugged Computing" />
+          </a>
+        
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+
+
+    
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>Como construir testes de integração no backend Node.JS</h1>
+                
+                
+                  <span class="post-meta">
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <blockquote>
+<p>Jest + Supertest a combinação perfeita para testes de integração</p>
+</blockquote>
+<h2 id="pré-requsiitos">Pré requsiitos</h2>
+<p>Neste post iremos focar exclusivamente da configuração, escrita e execução dos testes automatizados. Por tando, assumimos aqui que você tem os conhecimentos basicos necessarios para construir uma aplicação em Node.js.</p>
+<p>Para fins didaticos, mostramos aqui como estruturamos o nosso projeto de exemplo:</p>
+<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="o">|</span> <span class="nx">__tests__</span>       <span class="c1">// Diretorio onde os testes serão escritos
+</span><span class="c1"></span><span class="err">└───</span> <span class="nx">integrations</span>
+<span class="err">└───</span> <span class="nx">setup</span><span class="p">.</span><span class="nx">js</span> 
+<span class="o">|</span> <span class="nx">src</span>
+<span class="err">└───</span> <span class="nx">controllers</span>  <span class="c1">// Funções da controllers do express route
+</span><span class="c1"></span><span class="err">└───</span> <span class="nx">models</span>       <span class="c1">// Modelos do banco de dados
+</span><span class="c1"></span><span class="err">└───</span> <span class="nx">services</span>     <span class="c1">// Regras de negócio
+</span><span class="c1"></span><span class="err">└───</span> <span class="nx">routes</span><span class="p">.</span><span class="nx">js</span>    <span class="c1">// Definição de rotas express
+</span><span class="c1"></span><span class="err">└───</span> <span class="nx">server</span><span class="p">.</span><span class="nx">js</span>    <span class="c1">// Server para iniciar o app
+</span><span class="c1"></span><span class="o">|</span> <span class="kr">package</span><span class="p">.</span><span class="nx">json</span>
+</code></pre></div><h2 id="configurando-o-jest">Configurando o JEST</h2>
+<p>O <a href="https://jestjs.io/pt-BR/">Jest</a> é um poderoso Framework de Testes em JavaScript, mantido pelo Facebook Inc. com um foco na simplicidade. Funciona com projetos usando: Babel, TypeScript, Node, React, Angular, Vue e muito mais!</p>
+<h3 id="1-instalação">1. Instalação</h3>
+<p>Instale Jest usando <a href="https://yarnpkg.com/">yarn</a>:</p>
+<p><code>&gt; yarn add --dev jest</code></p>
+<p>Ou <a href="https://www.npmjs.com/">npm</a>:</p>
+<p><code>&gt; npm install --save-dev jest</code></p>
+<h3 id="2-gerando-um-arquivo-de-configuração-básico">2. Gerando um arquivo de configuração básico</h3>
+<p>Com base no seu projeto, o Jest fará algumas perguntas e criará um arquivo de configuração básico com uma breve descrição para cada opção:</p>
+<p><code>&gt; jest --init</code></p>
+<p>Perceba que será criado um arquivo na raiz do seu projeto chamado <strong>jest.config.js</strong></p>
+<p>Dentro desse arquivo existem varias opções de configuração para o Jest. Caso deseje, você pode consultar a <a href="https://jestjs.io/docs/en/configuration">documentação completa</a>.</p>
+<p>No entando, vamos destacar algumas opções que consideramos importantes.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Campo</strong></th>
+<th><strong>Descrição</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bail</td>
+<td>Para a execução após uma falha</td>
+</tr>
+<tr>
+<td>collectCoverage</td>
+<td>Indica se a cobertura deve ser coletada durante e execução</td>
+</tr>
+<tr>
+<td>collectCoverageFrom</td>
+<td>Indica os arquivos devem ser coletados as informações de cobertura. Indicamos que o valor seja:  <code>['**/*.{js,jsx}']</code> // todos os arquivos .js ou .jsx</td>
+</tr>
+<tr>
+<td>coverageDirectory</td>
+<td>Indica o diretorio onde os arquivos exportados pela coleta da cobertura durante a execução vão ser exportados. Indicamos que o valor seja: <code>__tests__/coverage</code></td>
+</tr>
+<tr>
+<td>testEnvironment</td>
+<td>O ambiente que vai ser usando nos testes. No nosso caso: <code>node</code></td>
+</tr>
+<tr>
+<td>testMatch</td>
+<td>O padrão que o Jest usa para detectar arquivos de teste. No nosso caso: <code>['**/__tests__/**/*.test.js?(x)']</code> // Todos os arquivos com extensão <code>.test.js</code> dentro da pasta <code>__tests__</code></td>
+</tr>
+<tr>
+<td>setupFilesAfterEnv</td>
+<td>Caminho para os módulos que executam algum código para configurar a estrutura de teste antes de cada teste. No nosso caso: <code>['./__tests__/setup.js']</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Lembrando que as configurações são totalmente personalizadas de acordo com cada projeto.</p>
+</blockquote>
+<h3 id="3-configurando-script-de-testes">3. Configurando script de testes</h3>
+<p>Adicione a seguinte seção ao seu <strong>package.json</strong>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="p">{</span>
+  <span class="s2">&#34;scripts&#34;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&#34;test&#34;</span><span class="o">:</span> <span class="s2">&#34;jest&#34;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><blockquote>
+<p>Você tambem pode adicionar algumas opções de execução atraves do <a href="https://jestjs.io/docs/en/cli.html">Jest CLI Options</a></p>
+</blockquote>
+<h2 id="construindo-os-testes">Construindo os Testes</h2>
+<h3 id="configurando-ambiente-de-testes">Configurando ambiente de testes</h3>
+<p>Antes de tudo é importante informar que em nosso projeto estamos utilizando o MongoDB, um banco de dados NoSQL atravez da biblioteca <a href="">mongoose</a>.</p>
+<p>De modo geral os testes são executados em ambientes e com banco de dados separados para não interferir na aplicação em produção.</p>
+<p>Aqui nos apenas criamos banco de dados diferentes de acordo com o ambiente. Deste modo, definimos as seguintes variaveis de ambeinte:</p>
+<pre><code>DB_PROD=mongodb+srv://&lt;user&gt;:&lt;password&gt;@develop-ey1lp.mongodb.net/production?retryWrites=true&amp;w=majority
+
+DB_TEST=mongodb+srv://&lt;user&gt;:&lt;password&gt;@develop-ey1lp.mongodb.net/test?retryWrites=true&amp;w=majority
+</code></pre><p>que são utilizadas no nosso arquivo de configuração de modo que se a variavel <code>NODE_ENV</code> for igual a <strong>&lsquo;test&rsquo;</strong> usaremos o banco de testes, caso contrario, usaremos o banco de produção.</p>
+<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;dotenv&#39;</span><span class="p">).</span><span class="nx">config</span><span class="p">()</span>
+
+<span class="kd">let</span> <span class="nx">PORT</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span> <span class="o">||</span> <span class="mi">3000</span>
+<span class="kd">let</span> <span class="nx">MONGODB_URI</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">DB_PROD</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">===</span> <span class="s1">&#39;test&#39;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">MONGODB_URI</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">DB_TEST</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">MONGODB_URI</span><span class="p">,</span>
+  <span class="nx">PORT</span>
+<span class="p">}</span>
+</code></pre></div><blockquote>
+<p>Em alguns casos ainda é recomendavel adicionar um banco de dados para desenvolvimento.</p>
+</blockquote>
+<h3 id="setup-e-teardown">Setup e Teardown</h3>
+<p>Muitas vezes, ao escrever testes, você tem algum trabalho de configuração que precisa ocorrer antes da execução dos testes, e você tem algum trabalho de conclusão que precisa acontecer após a execução dos testes. O Jest fornece funções auxiliares para lidar com isso.</p>
+<p>Se você tem algum trabalho que precisa fazer repetidamente para muitos testes, pode usar <code>beforeEach</code> e <code>afterEach</code>.</p>
+<p>Se você só precisa fazer a instalação uma vez, no início de um arquivo. O Jest fornece <code>beforeAll</code> e <code>afterAll</code> para lidar com esta situação.</p>
+<p>Agora vamos configurar o nosso <code>setup.js</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="p">{</span> <span class="nx">server</span><span class="p">,</span> <span class="nx">mongoose</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../src/server&#39;</span><span class="p">);</span>
+
+<span class="nx">beforeAll</span><span class="p">(</span><span class="nx">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">await</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">connection</span><span class="p">.</span><span class="nx">dropDatabase</span><span class="p">();</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;... Test Started&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">afterAll</span><span class="p">(</span><span class="nx">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">await</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">();</span>
+  <span class="nx">await</span> <span class="nx">server</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;... Test Ended&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div><p>Perceba que logo no começo do arquivo importamos as instancias do <code>server</code> e do <code>mongoose</code> direto do arquivo <code>server.js</code>. Para isso, em seu <code>server.js</code> você deve usar:</p>
+<p><code>module.export = {server, mongoose, app}</code></p>
+<blockquote>
+<p>Isso é importante pois caso você use outras instancias de <code>server</code> e <code>mongoose</code> o Jest não vai encerrar corretamente as instancias da execução no metodo <code>afterAll</code> e vai apresentar o erro: <code>Jest did not exit one second after the test run has completed.</code></p>
+</blockquote>
+<p>no metodo <code>beforeAll</code> apenas nos certificamos de limpar toda a base de dados para que não ocorram interferencias nos testes.</p>
+<blockquote>
+<p>Se você preferir limpar a base de dados a cada testes, use <code>beforeEach</code></p>
+</blockquote>
+<p>Já no metodo <code>afterAll</code>, desconectamos a instancia do mongoose e fechamos a instancia do server.</p>
+<h3 id="escrevendo-os-testes">Escrevendo os Testes</h3>
+<p>Para construir nossos testes, vamos utilizar o <a href="https://github.com/visionmedia/supertest">SuperTest</a>, uma biblioteca que fornece uma abstração de alto nível para testar requisições HTTP.</p>
+<ol>
+<li>Instale o SuperTest</li>
+</ol>
+<p>Execute um dos comandos abaixo:<br>
+<code>&gt; yarn add supertest -D</code><br>
+<code>&gt; npm install supertest --save-dev</code></p>
+<ol start="2">
+<li>Crie o seu arquivo de testes</li>
+</ol>
+<p>dentro da pasta <code>__tests__/integrations</code>, crie um arquivo <code>api.test.js</code></p>
+<blockquote>
+<p>A medida que o seu projeto cresce, considere criar arquivos diferentes, seprados por endpoint ou por controller&hellip;</p>
+</blockquote>
+<ol start="3">
+<li>importe o SuperTest</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">supertest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;supertest&#39;</span><span class="p">);</span>
+<span class="kr">const</span> <span class="p">{</span> <span class="nx">app</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../../src/server&#39;</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">supertest</span><span class="p">(</span><span class="nx">app</span><span class="p">);</span>
+</code></pre></div><ol start="4">
+<li>Entendendo a estrutura dos testes</li>
+</ol>
+<p>Usamos <code>describe</code> para criar um agrupamento de testes.<br>
+Usamos <code>it</code> para criar um caso de teste.<br>
+Usamos <code>async</code> e <code>await</code> para tratar as execuções assíncronas. <a href="https://jestjs.io/docs/en/tutorial-async">Veja mais</a>.<br>
+Usamos <code>request.&lt;HTTP_METHOD&gt;('/endpoint')</code> para acessar os endpoint do nosso servidor com supertest.<br>
+Guardamos a resposta da socicitação ao nosso servidor na constante <code>response</code>.<br>
+Usamos <code>expect</code> para verificar se os valores atendem a certas condições.  <a href="https://jestjs.io/docs/en/expect">Veja mais</a>. 
+Usamos <code>toBe</code> como nosso <strong>Matcher</strong> em complemento ao <code>expect</code> para testar valores de maneiras diferentes. <a href="https://jestjs.io/docs/en/using-matchers">Veja mais</a>.</p>
+<ol start="5">
+<li>Crie os seus testes</li>
+</ol>
+<p>Vamos expor aqui alguns exemplos de testes que utilizamos. Para consultar mais exemplos veja a <a href="https://github.com/visionmedia/supertest">documentação</a>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Testando a rota: POST - /question&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;Verifica a criação de uma questão do tipo MULTIPLECHOICE&#39;</span><span class="p">,</span> <span class="nx">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="kr">const</span> <span class="nx">body</span> <span class="o">=</span> <span class="p">{</span>
+          <span class="nx">statement</span><span class="o">:</span> <span class="s1">&#39;statement&#39;</span><span class="p">,</span>
+          <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;MULTIPLECHOICE&#39;</span><span class="p">,</span>
+          <span class="nx">level</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nx">tips</span><span class="o">:</span> <span class="s1">&#39;tips&#39;</span><span class="p">,</span>
+          <span class="nx">alternatives</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+              <span class="nx">text</span><span class="o">:</span> <span class="s2">&#34;text&#34;</span><span class="p">,</span>
+              <span class="nx">correct</span><span class="o">:</span> <span class="kc">false</span>
+            <span class="p">},</span> 
+            <span class="p">{</span>
+               <span class="nx">text</span><span class="o">:</span> <span class="s2">&#34;text&#34;</span><span class="p">,</span>
+               <span class="nx">correct</span><span class="o">:</span> <span class="kc">false</span>
+            <span class="p">},</span> 
+            <span class="p">{</span>
+                <span class="nx">text</span><span class="o">:</span> <span class="s2">&#34;text&#34;</span><span class="p">,</span>
+                <span class="nx">correct</span><span class="o">:</span> <span class="kc">false</span>
+            <span class="p">},</span> <span class="p">{</span>
+                <span class="nx">text</span><span class="o">:</span> <span class="s2">&#34;text&#34;</span><span class="p">,</span>
+                <span class="nx">correct</span><span class="o">:</span> <span class="kc">true</span>
+            <span class="p">}]</span>
+        <span class="p">}</span>
+        <span class="kr">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">request</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/question&#39;</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">body</span><span class="p">));</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="mi">201</span><span class="p">);</span>
+    <span class="p">});</span>
+
+</code></pre></div><p>No caso acima, apenas enviamos uma requisição para o endpoint <strong>'/question&rsquo;</strong> no metodo <strong>POST</strong> e verifica se o status retornado foi <strong>201</strong>.</p>
+<p>Você pode mudar o metodo, o endpoint e o corpo da requisição tranquilamente para se adaptar ao seu contexto. Como por exemplo:</p>
+<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;Testando a rota: GET - /question&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">beforeAll</span><span class="p">(</span><span class="nx">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">body</span> <span class="o">=</span> <span class="p">{</span>
+          <span class="nx">statement</span><span class="o">:</span> <span class="s1">&#39;statement&#39;</span><span class="p">,</span>
+          <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;MULTIPLECHOICE&#39;</span><span class="p">,</span>
+          <span class="nx">level</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="nx">tips</span><span class="o">:</span> <span class="s1">&#39;tips&#39;</span><span class="p">,</span>
+          <span class="nx">alternatives</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+              <span class="nx">text</span><span class="o">:</span> <span class="s2">&#34;text&#34;</span><span class="p">,</span>
+              <span class="nx">correct</span><span class="o">:</span> <span class="kc">false</span>
+            <span class="p">},</span> 
+            <span class="p">{</span>
+               <span class="nx">text</span><span class="o">:</span> <span class="s2">&#34;text&#34;</span><span class="p">,</span>
+               <span class="nx">correct</span><span class="o">:</span> <span class="kc">false</span>
+            <span class="p">},</span> 
+            <span class="p">{</span>
+                <span class="nx">text</span><span class="o">:</span> <span class="s2">&#34;text&#34;</span><span class="p">,</span>
+                <span class="nx">correct</span><span class="o">:</span> <span class="kc">false</span>
+            <span class="p">},</span> <span class="p">{</span>
+                <span class="nx">text</span><span class="o">:</span> <span class="s2">&#34;text&#34;</span><span class="p">,</span>
+                <span class="nx">correct</span><span class="o">:</span> <span class="kc">true</span>
+            <span class="p">}]</span>
+        <span class="p">}</span>
+        <span class="kr">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">request</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/question&#39;</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">body</span><span class="p">));</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;Verifica se a consulta retona status 200&#39;</span><span class="p">,</span> <span class="nx">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">request</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/question&#39;</span><span class="p">).</span><span class="nx">send</span><span class="p">();</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+  <span class="p">});</span>
+  <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;Verifica se a consulta retona um objeto&#39;</span><span class="p">,</span> <span class="nx">async</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">request</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/question&#39;</span><span class="p">).</span><span class="nx">send</span><span class="p">();</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">expect</span><span class="p">.</span><span class="nx">any</span><span class="p">(</span><span class="nb">Object</span><span class="p">));</span>
+  <span class="p">});</span>
+</code></pre></div><p>Perceba que dentro do <code>it</code> mudamos apenas o metodo (de <strong>POST</strong> para <strong>GET</strong>) a qual desejamos realizar a requisição.</p>
+<p>No caso das requisições de consulta, é natual que você queira sempre criar um objeto antes para que o mesmo seja consultado depois. Nesse caso, usamos o  metodo <code>beforeEach</code>.</p>
+<p>Podemos ver também que no segundo <code>it</code> não verificamos apenas o status da requisição e sim o valor retornado no seu corpo. As verificações com JEST são quase infinitas, seja critivo&hellip;</p>
+<p>Outra possibilidade é que a sua API suporte o envio de arquivos, deta forma você pode usar:</p>
+<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">await</span> <span class="nx">request</span><span class="p">(</span><span class="nx">app</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">attach</span><span class="p">(</span><span class="s1">&#39;avatar&#39;</span><span class="p">,</span> <span class="s1">&#39;test/fixtures/avatar.jpg&#39;</span><span class="p">)</span> <span class="c1">// para arquivos
+</span><span class="c1"></span>  <span class="p">.</span><span class="nx">field</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;my awesome avatar&#39;</span><span class="p">)</span> <span class="c1">// para demais campos
+</span><span class="c1"></span>  <span class="p">...</span>
+</code></pre></div><h2 id="executando-os-testes">Executando os Testes</h2>
+<p>Com tudo isso feito, basicamnete precisamos apenas executar o comando <code>yarn test</code> ou <code>npm test</code>.</p>
+<p>No entrando como nos estamos utilizando configurações de ambiente e banco de dados diferentes, precisamos fazer uma pequena mudança no <code>package.json</code> para adicionar a variavel <code>NODE_ENV=test</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript">  <span class="s2">&#34;scripts&#34;</span><span class="o">:</span> <span class="p">{</span>    
+    <span class="s2">&#34;test&#34;</span><span class="o">:</span> <span class="s2">&#34;NODE_ENV=test jest &#34;</span><span class="p">,</span>
+    <span class="p">...</span>
+  <span class="p">},</span>
+</code></pre></div><p>agora sim, basta executar o comando <code>yarn test</code> ou <code>npm test</code> e ver a magica acontecer.</p>
+
+      </article>
+
+      <ul class="pager blog-pager">
+        
+          <li class="previous">
+            <a href="https://pluggedcomputing.gitlab.io/post/20200229_commit_mensagens/" data-toggle="tooltip" data-placement="top" title="Como escrever mensagens de commits no Git">&larr; </a>
+          </li>
+        
+        
+          <li class="next">
+            <a href="https://pluggedcomputing.gitlab.io/post/20200703_migrate_to_cli/" data-toggle="tooltip" data-placement="top" title="Migrar Expo para ReactNative CLI"> &rarr;</a>
+          </li>
+        
+      </ul>
+
+      
+        
+      
+
+    </div>
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:matheus.barbosa@dcx.ufpb.br" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://gitlab.com/barbosamaatheus" title="GitLab">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/barbosamaatheus" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/barbosamaatheus" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/barbosamaatheus" title="Instagram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="https://pluggedcomputing.gitlab.io/index.xml" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          Matheus Barbosa de Oliveira
+          &nbsp;&bull;&nbsp;
+          2020
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://pluggedcomputing.gitlab.io">Plugged Computing</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha384-dq1/gEHSxPZQ7DdrM82ID4YVol9BYyU7GbWlIwnwyPzotpoc57wDw/guX8EaYGPx" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://pluggedcomputing.gitlab.io/js/main.js"></script>
+<script src="https://pluggedcomputing.gitlab.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> renderMathInElement(document.body); </script>
+
+
+
+
+
+  </body>
+</html>
+

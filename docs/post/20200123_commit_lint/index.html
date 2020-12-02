@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Padronização das mensagens de commit</title>
+  <meta property="og:title" content="Padronização das mensagens de commit" />
+  <meta name="twitter:title" content="Padronização das mensagens de commit" />
+  <meta name="description" content="Visando obter uma alta qualidade e padronização das mensagem dos commits, em nosso projeto, utilizamos o commit-lint, que ajuda na padronização das mensagens de commit logo quando elas são criadas.
+Em nosso projeto, utilizamos o conventional commit format, baseado no Angular convention.
+De modo geral, o padrão é da seguinte forma:
+type(scope): subject
+onde:
+type: pode assumir os seguintes valores:
+   Valor Descrição     build commites que disparam builds   ci commites para configuração de integração continua   chore commites referentes a tarefas de gestao de projeto   docs commites referentes a algum tipo de documentação   feat commites de novas features   fix commites para correção de bugs em desenvolvimento ou em produção   perf commites relacionados a performace do codigo e/ou da aplicação   refactor commites de refatoração de codigo   revert commites para reverter alguma alteração no codigo   style commites para alterações na formatação do codigo, sem alteracoes no codigo   test commits para adição/atualização de scripts de teste    scope: deve ser o sufixo da branch que é o mesmo id do issue da alteração.">
+  <meta property="og:description" content="Visando obter uma alta qualidade e padronização das mensagem dos commits, em nosso projeto, utilizamos o commit-lint, que ajuda na padronização das mensagens de commit logo quando elas são criadas.
+Em nosso projeto, utilizamos o conventional commit format, baseado no Angular convention.
+De modo geral, o padrão é da seguinte forma:
+type(scope): subject
+onde:
+type: pode assumir os seguintes valores:
+   Valor Descrição     build commites que disparam builds   ci commites para configuração de integração continua   chore commites referentes a tarefas de gestao de projeto   docs commites referentes a algum tipo de documentação   feat commites de novas features   fix commites para correção de bugs em desenvolvimento ou em produção   perf commites relacionados a performace do codigo e/ou da aplicação   refactor commites de refatoração de codigo   revert commites para reverter alguma alteração no codigo   style commites para alterações na formatação do codigo, sem alteracoes no codigo   test commits para adição/atualização de scripts de teste    scope: deve ser o sufixo da branch que é o mesmo id do issue da alteração.">
+  <meta name="twitter:description" content="Visando obter uma alta qualidade e padronização das mensagem dos commits, em nosso projeto, utilizamos o commit-lint, que ajuda na padronização das mensagens de commit logo quando elas são criadas.
+Em …">
+  <meta name="author" content="Matheus Barbosa de Oliveira"/>
+  <link href='https://pluggedcomputing.gitlab.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="https://pluggedcomputing.gitlab.io/img/logo.png" />
+  <meta name="twitter:image" content="https://pluggedcomputing.gitlab.io/img/logo.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@barbosamaatheus" />
+  <meta name="twitter:creator" content="@barbosamaatheus" />
+  <meta property="og:url" content="https://pluggedcomputing.gitlab.io/post/20200123_commit_lint/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Plugged Computing" />
+
+  <meta name="generator" content="Hugo 0.73.0" />
+  <link rel="canonical" href="https://pluggedcomputing.gitlab.io/post/20200123_commit_lint/" />
+  <link rel="alternate" href="https://pluggedcomputing.gitlab.io/index.xml" type="application/rss+xml" title="Plugged Computing">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://pluggedcomputing.gitlab.io/css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://pluggedcomputing.gitlab.io/css/pygment_highlights.css" />
+  <link rel="stylesheet" href="https://pluggedcomputing.gitlab.io/css/highlight.min.css" />
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://pluggedcomputing.gitlab.io">Plugged Computing</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="https://pluggedcomputing.gitlab.io/post">Blog</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">Configurações de Ambiente</a>
+              <div class="navlinks-children">
+                
+                  <a href="https://pluggedcomputing.gitlab.io/page/environment_settings/pre_requirements">Pré Requisitos</a>
+                
+                  <a href="https://pluggedcomputing.gitlab.io/page/environment_settings/environment_java">Java JDK</a>
+                
+                  <a href="https://pluggedcomputing.gitlab.io/page/environment_settings/environment_android">Android SDK</a>
+                
+                  <a href="https://pluggedcomputing.gitlab.io/page/environment_settings/environment_others">Outras Variaveis</a>
+                
+                  <a href="https://pluggedcomputing.gitlab.io/page/environment_settings/installing_dependencies">Instalando Dependencias</a>
+                
+                  <a href="https://pluggedcomputing.gitlab.io/page/environment_settings/testing">Testando</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">Contribuições</a>
+              <div class="navlinks-children">
+                
+                  <a href="https://pluggedcomputing.gitlab.io/page/contribuitions/download_the_project">Baixando o Projeto</a>
+                
+                  <a href="https://pluggedcomputing.gitlab.io/page/contribuitions/starting_emulator">Iniciando Emulador</a>
+                
+                  <a href="https://pluggedcomputing.gitlab.io/page/contribuitions/making_changes">Realizando alterações</a>
+                
+                  <a href="https://pluggedcomputing.gitlab.io/page/contribuitions/create_merge_request">Criando Merge Requests</a>
+                
+                  <a href="https://pluggedcomputing.gitlab.io/page/contribuitions/good_habits">Boas Práticas</a>
+                
+              </div>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        
+          <a title="Plugged Computing" href="https://pluggedcomputing.gitlab.io">
+            <img class="avatar-img" src="https://pluggedcomputing.gitlab.io/img/logo.png" alt="Plugged Computing" />
+          </a>
+        
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+
+
+    
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>Padronização das mensagens de commit</h1>
+                
+                
+                  <span class="post-meta">
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>Visando obter uma alta qualidade e padronização das mensagem dos commits, em nosso projeto, utilizamos o <a href="">commit-lint</a>, que ajuda na padronização das mensagens de commit logo quando elas são criadas.</p>
+<p>Em nosso projeto, utilizamos o <a href="https://www.conventionalcommits.org/en/v1.0.0/">conventional commit format</a>, baseado no <a href="https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional#type-enum">Angular convention</a>.</p>
+<p>De modo geral, o padrão é da seguinte forma:</p>
+<p><code>type(scope): subject</code></p>
+<p>onde:</p>
+<p><code>type</code>: pode assumir os seguintes valores:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Valor</strong></th>
+<th><strong>Descrição</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>build</td>
+<td>commites que disparam builds</td>
+</tr>
+<tr>
+<td>ci</td>
+<td>commites para configuração de integração continua</td>
+</tr>
+<tr>
+<td>chore</td>
+<td>commites referentes a tarefas de gestao de projeto</td>
+</tr>
+<tr>
+<td>docs</td>
+<td>commites referentes a algum tipo de documentação</td>
+</tr>
+<tr>
+<td>feat</td>
+<td>commites de novas features</td>
+</tr>
+<tr>
+<td>fix</td>
+<td>commites para correção de bugs em desenvolvimento ou em produção</td>
+</tr>
+<tr>
+<td>perf</td>
+<td>commites relacionados a performace do codigo e/ou da aplicação</td>
+</tr>
+<tr>
+<td>refactor</td>
+<td>commites de refatoração de codigo</td>
+</tr>
+<tr>
+<td>revert</td>
+<td>commites para reverter alguma alteração no codigo</td>
+</tr>
+<tr>
+<td>style</td>
+<td>commites para alterações na formatação do codigo, sem alteracoes no codigo</td>
+</tr>
+<tr>
+<td>test</td>
+<td>commits para adição/atualização de scripts de teste</td>
+</tr>
+</tbody>
+</table>
+<p><code>scope</code>: deve ser o sufixo da branch que é o mesmo id do issue da alteração.</p>
+<blockquote>
+<p>ex: <em>develop</em> ou <em>#10</em></p>
+</blockquote>
+<p><code>subject</code>: é a mensagem do commit, deve ser curta e objetiva, apontando exatamente a alteração realizada.</p>
+<p>Uma mensagem de commit ideal, utilizando esse padrão, seria:</p>
+<p><em><code>feat(#01): initial commit</code></em></p>
+<p>Para mais informações, consulte a documentação do <a href="https://github.com/conventional-changelog/commitlint#config">commit-lint</a>.</p>
+
+      </article>
+
+      <ul class="pager blog-pager">
+        
+          <li class="previous">
+            <a href="https://pluggedcomputing.gitlab.io/post/20200120_create_new_issue/" data-toggle="tooltip" data-placement="top" title="Crie uma Issue">&larr; </a>
+          </li>
+        
+        
+          <li class="next">
+            <a href="https://pluggedcomputing.gitlab.io/post/20200229_commit_mensagens/" data-toggle="tooltip" data-placement="top" title="Como escrever mensagens de commits no Git"> &rarr;</a>
+          </li>
+        
+      </ul>
+
+      
+        
+      
+
+    </div>
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:matheus.barbosa@dcx.ufpb.br" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://gitlab.com/barbosamaatheus" title="GitLab">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/barbosamaatheus" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/barbosamaatheus" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/barbosamaatheus" title="Instagram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="https://pluggedcomputing.gitlab.io/index.xml" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          Matheus Barbosa de Oliveira
+          &nbsp;&bull;&nbsp;
+          2020
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://pluggedcomputing.gitlab.io">Plugged Computing</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha384-dq1/gEHSxPZQ7DdrM82ID4YVol9BYyU7GbWlIwnwyPzotpoc57wDw/guX8EaYGPx" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://pluggedcomputing.gitlab.io/js/main.js"></script>
+<script src="https://pluggedcomputing.gitlab.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> renderMathInElement(document.body); </script>
+
+
+
+
+
+  </body>
+</html>
+

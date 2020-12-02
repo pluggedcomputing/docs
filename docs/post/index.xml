@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Plugged Computing</title>
+    <link>https://pluggedcomputing.gitlab.io/post/</link>
+    <description>Recent content in Posts on Plugged Computing</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <managingEditor>matheus.barbosa@dcx.ufpb.br (Matheus Barbosa de Oliveira)</managingEditor>
+    <webMaster>matheus.barbosa@dcx.ufpb.br (Matheus Barbosa de Oliveira)</webMaster>
+    <lastBuildDate>Fri, 03 Jul 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://pluggedcomputing.gitlab.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Migrar Expo para ReactNative CLI</title>
+      <link>https://pluggedcomputing.gitlab.io/post/20200703_migrate_to_cli/</link>
+      <pubDate>Fri, 03 Jul 2020 00:00:00 +0000</pubDate>
+      <author>matheus.barbosa@dcx.ufpb.br (Matheus Barbosa de Oliveira)</author>
+      <guid>https://pluggedcomputing.gitlab.io/post/20200703_migrate_to_cli/</guid>
+      <description>1: Configuração de ambiente e instalação do ReactNative CLI, seguindo os passos em https://reactnative.dev/docs/0.60/getting-started 2: Criar novo projeto ReactNative CLI com o comando npx react-native init nome_projeto 3: Copiar os arquivos src, App.js e para o arquivo package.json siga as instruções:  Copie as dependências dependencies e devDependencies do arquivo package.json do projeto em expo para o projeto em cli.   Remova &amp;quot;react-native&amp;quot;: &amp;quot;https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz&amp;quot; e deixe apenas &amp;quot;react-native&amp;quot;: &amp;quot;0.62.2&amp;quot;  4: Execute o comando npm install para baixar as dependências 5: Copiar o arquivo commitlint.</description>
+    </item>
+    
+    <item>
+      <title>Como construir testes de integração no backend Node.JS</title>
+      <link>https://pluggedcomputing.gitlab.io/post/20200322_integrations_tests/</link>
+      <pubDate>Sun, 22 Mar 2020 00:00:00 +0000</pubDate>
+      <author>matheus.barbosa@dcx.ufpb.br (Matheus Barbosa de Oliveira)</author>
+      <guid>https://pluggedcomputing.gitlab.io/post/20200322_integrations_tests/</guid>
+      <description>Jest + Supertest a combinação perfeita para testes de integração
+ Pré requsiitos Neste post iremos focar exclusivamente da configuração, escrita e execução dos testes automatizados. Por tando, assumimos aqui que você tem os conhecimentos basicos necessarios para construir uma aplicação em Node.js.
+Para fins didaticos, mostramos aqui como estruturamos o nosso projeto de exemplo:
+| __tests__ // Diretorio onde os testes serão escritos └─── integrations └─── setup.js | src └─── controllers // Funções da controllers do express route └─── models // Modelos do banco de dados └─── services // Regras de negócio └─── routes.</description>
+    </item>
+    
+    <item>
+      <title>Como escrever mensagens de commits no Git</title>
+      <link>https://pluggedcomputing.gitlab.io/post/20200229_commit_mensagens/</link>
+      <pubDate>Sat, 29 Feb 2020 00:00:00 +0000</pubDate>
+      <author>matheus.barbosa@dcx.ufpb.br (Matheus Barbosa de Oliveira)</author>
+      <guid>https://pluggedcomputing.gitlab.io/post/20200229_commit_mensagens/</guid>
+      <description>Esse texto é uma adaptação de https://www.lucascaton.com.br/2017/10/16/como-escrever-mensagens-de-commits-no-git/
+ Devemos escrever a mensagem no presente? No futuro? Em português? Em inglês? São infinitas as formas as quais uma mensagem de commit pode ser escrita.
+Sabemos que o ingles é fundamental na nossa profissão e existem inumeras vantagens de se programar em ingles. Porém no nosso projeto, apenas o codigo é obrigatorio ser em ingles, as mensagens de commit são livres de indiomas e você pode escolher o que preferir.</description>
+    </item>
+    
+    <item>
+      <title>Padronização das mensagens de commit</title>
+      <link>https://pluggedcomputing.gitlab.io/post/20200123_commit_lint/</link>
+      <pubDate>Thu, 23 Jan 2020 00:00:00 +0000</pubDate>
+      <author>matheus.barbosa@dcx.ufpb.br (Matheus Barbosa de Oliveira)</author>
+      <guid>https://pluggedcomputing.gitlab.io/post/20200123_commit_lint/</guid>
+      <description>Visando obter uma alta qualidade e padronização das mensagem dos commits, em nosso projeto, utilizamos o commit-lint, que ajuda na padronização das mensagens de commit logo quando elas são criadas.
+Em nosso projeto, utilizamos o conventional commit format, baseado no Angular convention.
+De modo geral, o padrão é da seguinte forma:
+type(scope): subject
+onde:
+type: pode assumir os seguintes valores:
+   Valor Descrição     build commites que disparam builds   ci commites para configuração de integração continua   chore commites referentes a tarefas de gestao de projeto   docs commites referentes a algum tipo de documentação   feat commites de novas features   fix commites para correção de bugs em desenvolvimento ou em produção   perf commites relacionados a performace do codigo e/ou da aplicação   refactor commites de refatoração de codigo   revert commites para reverter alguma alteração no codigo   style commites para alterações na formatação do codigo, sem alteracoes no codigo   test commits para adição/atualização de scripts de teste    scope: deve ser o sufixo da branch que é o mesmo id do issue da alteração.</description>
+    </item>
+    
+    <item>
+      <title>Crie uma Issue</title>
+      <link>https://pluggedcomputing.gitlab.io/post/20200120_create_new_issue/</link>
+      <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
+      <author>matheus.barbosa@dcx.ufpb.br (Matheus Barbosa de Oliveira)</author>
+      <guid>https://pluggedcomputing.gitlab.io/post/20200120_create_new_issue/</guid>
+      <description>Existem várias maneiras de acessar o novo formulário de problema de dentro de um projeto, a maneira mais utilizada é a seguinte:
+ Navegue para o Painel do seu projeto &amp;gt; Issues &amp;gt; New Issue; Ao criar um novo problema, você será solicitado a preencher os dados e os campos do problema. Para facilitar e organizar ainda melhor o projeto, utilize um dos:  Preencha o titulo de forma intuitiva e direta.</description>
+    </item>
+    
+    <item>
+      <title>Extensões Uteis para o Visual Studio Code.</title>
+      <link>https://pluggedcomputing.gitlab.io/post/20190930_extensions_vscode/</link>
+      <pubDate>Mon, 30 Sep 2019 00:00:00 +0000</pubDate>
+      <author>matheus.barbosa@dcx.ufpb.br (Matheus Barbosa de Oliveira)</author>
+      <guid>https://pluggedcomputing.gitlab.io/post/20190930_extensions_vscode/</guid>
+      <description>Nesse guia vamos te apresentar algumas extensões uteis para o VSCode. Todas as entensões aprensetadas aqui foram testadas e são recomenadas para uso.
+Como instalar extensões?  Abra o Visual Studio Code e pressione Ctrl + Shift + P Busque por: Install Extensions Selecione a extensãõ que deseja e prencione em Instalar  Plugins   Dracula Theme Um dos mais famosos temas, suportados em diversas IDE&amp;rsquo;s e gratis.   Bracket Pair Colorizer Essa extensão permite que os colchetes correspondentes sejam identificados com cores.</description>
+    </item>
+    
+    <item>
+      <title>Integração Prettier &#43; ESLint &#43; Airbnb Style Guide &#43; EditorConfig no VSCode</title>
+      <link>https://pluggedcomputing.gitlab.io/post/20190901_style_guide/</link>
+      <pubDate>Sun, 01 Sep 2019 00:00:00 +0000</pubDate>
+      <author>matheus.barbosa@dcx.ufpb.br (Matheus Barbosa de Oliveira)</author>
+      <guid>https://pluggedcomputing.gitlab.io/post/20190901_style_guide/</guid>
+      <description>Nesse guia vamos te ajudar a configurar algumas bibliotecas e estrenções que vão te ajudar na hora de padronizar e organizar o codigo dos seus projeto.
+ Como referencia, utilizamos o Visual Studio Code como IDE e o Yarn para instalar as dependencia.
+ Ferramentas ESLint  ESLint , é um programa que percorre seu código e o analisa quanto a possíveis erros. A extensão é altamente configurável, com uma variedade de opções internas para combinar com o guia de estilo da sua empresa.</description>
+    </item>
+    
+    <item>
+      <title>Boas Praticas</title>
+      <link>https://pluggedcomputing.gitlab.io/post/20190830_good_habits/</link>
+      <pubDate>Fri, 30 Aug 2019 00:00:00 +0000</pubDate>
+      <author>matheus.barbosa@dcx.ufpb.br (Matheus Barbosa de Oliveira)</author>
+      <guid>https://pluggedcomputing.gitlab.io/post/20190830_good_habits/</guid>
+      <description>Obrigatórias  Todos os nomes de variaveis, funções e metodos devem ser em ingles. Deve ser aplicado o design pattern Model View Controller (MVC). Por padrão não usaremos &amp;quot;;&amp;quot; no final dos comandos. Deve-se utilizar um estilo de programação mais funcional, aproveitando-se dos metodos já existentes na lingaugem e das dependencias. Nada de reinventar a roda&amp;hellip; Todos os metodos devem ter um ou mais testes unitarios equivalentes. Usaremos o Jest.  Opcionais  Use o eslint ou JS Lint para padronização do codigo fonte.</description>
+    </item>
+    
+    <item>
+      <title>Criando Merge Requests</title>
+      <link>https://pluggedcomputing.gitlab.io/post/20190829_create_merge_request/</link>
+      <pubDate>Thu, 29 Aug 2019 00:00:00 +0000</pubDate>
+      <author>matheus.barbosa@dcx.ufpb.br (Matheus Barbosa de Oliveira)</author>
+      <guid>https://pluggedcomputing.gitlab.io/post/20190829_create_merge_request/</guid>
+      <description>Os merge requests são como você integra alterações separadas que você fez em uma branch do projeto.
+ Antes de começar, você já deveria ter passado pelo guia de Como contribuir?. Vá para o projeto em que deseja mesclar suas alterações e clique em Merge requests. Clique em New merge request no lado direito da tela. A partir daí, você tem a opção de selecionar a branch de origem e a de destino com o qual deseja comparar.</description>
+    </item>
+    
+    <item>
+      <title>Como contribuir?</title>
+      <link>https://pluggedcomputing.gitlab.io/post/20190828_making_changes/</link>
+      <pubDate>Wed, 28 Aug 2019 00:00:00 +0000</pubDate>
+      <author>matheus.barbosa@dcx.ufpb.br (Matheus Barbosa de Oliveira)</author>
+      <guid>https://pluggedcomputing.gitlab.io/post/20190828_making_changes/</guid>
+      <description>Aqui entraremos mais fundo no mundo do git. Para isso, é necessario que você tenha dominio basico dos comandos da ferramanta. Deixo aqui a sujestão de um Guia Pratico de Git para você não ter complicações.
+Em nosso projeto, utilizamos adaptações da metodologia do git-flow. O git-flow é um conjunto de extensões para o git que provê operações de alto-nível para repositórios usando o modelo de branches do Vincent Driessen. Saiba mais</description>
+    </item>
+    
+    <item>
+      <title>Iniciando o Emulador</title>
+      <link>https://pluggedcomputing.gitlab.io/post/20190827_starting_emulator/</link>
+      <pubDate>Tue, 27 Aug 2019 00:00:00 +0000</pubDate>
+      <author>matheus.barbosa@dcx.ufpb.br (Matheus Barbosa de Oliveira)</author>
+      <guid>https://pluggedcomputing.gitlab.io/post/20190827_starting_emulator/</guid>
+      <description>Para consultar os emuladores disponiveis na sua maquina, abra o Prompt de Comando do Windows e execute o seguinte comando:
+&amp;gt; emulator -list-avds
+Se tudo der certo, você verá uma mensagem desse tipo:
+Nexus_5X_API_28Pixel_API_28Agora, para iniciar o emulador, escolha uma das opções da lista e execute o comando:
+&amp;gt; emulator -avd Nexus_5X_API_28
+Se você quiser da um boot &amp;ldquo;limpo&amp;rdquo; no seu emulador, pode usar:
+&amp;gt; emulator -no-snapshot -avd -avd Nexus_5X_API_28</description>
+    </item>
+    
+    <item>
+      <title>Baixando o projeto</title>
+      <link>https://pluggedcomputing.gitlab.io/post/20190826_download_the_project/</link>
+      <pubDate>Mon, 26 Aug 2019 00:00:00 +0000</pubDate>
+      <author>matheus.barbosa@dcx.ufpb.br (Matheus Barbosa de Oliveira)</author>
+      <guid>https://pluggedcomputing.gitlab.io/post/20190826_download_the_project/</guid>
+      <description>Para utilizar o projeto, você precisa ter configurado corretamente o seu ambeinte. Para fazer isso, acesse: configurando ambeinte.
+ Escolha um projeto e faça download ou clone do repositorio do projeto que você deseja.  Para clonar, abra o git bash na pasta onde deseja armazenar o projeto localmente e rode o comando: &amp;gt; git clone &amp;quot;https://gitlab.com/pluggedcomputing/nome-do-projeto.git&amp;quot;   Abra o git bash na pasta baixada ou clonada; Abra o projeto no Visual Studio Code ou na sua IDE de preferencia;   Para abrir via linha de comando, execute o comando na pasta do projeto &amp;gt; code .</description>
+    </item>
+    
+    <item>
+      <title>Testando</title>
+      <link>https://pluggedcomputing.gitlab.io/post/20190825_testing/</link>
+      <pubDate>Sun, 25 Aug 2019 00:00:00 +0000</pubDate>
+      <author>matheus.barbosa@dcx.ufpb.br (Matheus Barbosa de Oliveira)</author>
+      <guid>https://pluggedcomputing.gitlab.io/post/20190825_testing/</guid>
+      <description>Para testar, Abra o Propt de Comando do Windows e siga as instruções:
+Java &amp;gt; java -version
+Se tudo der certo, você verá uma mensagem desse tipo:
+java version &amp;quot;1.8.0_202&amp;quot;Java(TM) SE Runtime Environment (build 1.8.0_202-b08)Java HotSpot(TM) 64-Bit Server VM (build 25.202-b08, mixed mode)Node JS &amp;gt; node -v
+Se tudo der certo, você verá uma mensagem desse tipo:
+v8.12.0ADB &amp;gt; adb --version
+Se tudo der certo, você verá uma mensagem desse tipo:</description>
+    </item>
+    
+    <item>
+      <title>Instalando Dependencias</title>
+      <link>https://pluggedcomputing.gitlab.io/post/20190824_installing_dependencies/</link>
+      <pubDate>Sat, 24 Aug 2019 00:00:00 +0000</pubDate>
+      <author>matheus.barbosa@dcx.ufpb.br (Matheus Barbosa de Oliveira)</author>
+      <guid>https://pluggedcomputing.gitlab.io/post/20190824_installing_dependencies/</guid>
+      <description>Abra o Propt de Comando do Windows e insira os seguintes comandos:
+React Native &amp;gt; yarn global add react-native-cli
+ Caso não tenha instalado o Yarn, você pode usar: npm install -g react-native-cli
+ Aceitando Licensas do Emulador &amp;gt; sdkmanager --licenses
+Presione Y em todas as opções para aceitar as licensas.</description>
+    </item>
+    
+    <item>
+      <title>Outras Variaveis</title>
+      <link>https://pluggedcomputing.gitlab.io/post/20190823_environment_others/</link>
+      <pubDate>Fri, 23 Aug 2019 00:00:00 +0000</pubDate>
+      <author>matheus.barbosa@dcx.ufpb.br (Matheus Barbosa de Oliveira)</author>
+      <guid>https://pluggedcomputing.gitlab.io/post/20190823_environment_others/</guid>
+      <description>Também é interessante que você tenha algumas outras varivais no seu Path do sistema, para poder eventualmente utilizar recusos de linha de comando dos sistemas. Normalmente, essas variavis são configuradas automaticamente na hora da instalação do sistema, porém não custa nada conferir não é mesmo??
+ Agora, acesse o Painel de Controle do Windows, abra o item “Sistema”, clique em “Configurações avançadas do sistema”, selecione “Variáveis de ambiente” Procure pela variavel Path e clique para edita-la.</description>
+    </item>
+    
+    <item>
+      <title>Variaveis ANDROID SDK</title>
+      <link>https://pluggedcomputing.gitlab.io/post/20190822_environment_android/</link>
+      <pubDate>Thu, 22 Aug 2019 00:00:00 +0000</pubDate>
+      <author>matheus.barbosa@dcx.ufpb.br (Matheus Barbosa de Oliveira)</author>
+      <guid>https://pluggedcomputing.gitlab.io/post/20190822_environment_android/</guid>
+      <description>Os exemplos utilizados aqui serão baseados no Windows 10. Caso seu sistema operacional seja Linux ou macOS, você pode consultar os seguintes tutoriais: Linux | macOS
+ Localize o diretório de instalação Java   Se você não alterou o caminho durante a instalação, ele será parecido com isso C:\Program Files\Java\jdk1.8.0_65
+ Vá para Painel de controle &amp;gt; Sistema &amp;gt; Configurações avançadas do sistema Clique no botão Variáveis de ambiente Sob Variáveis do sistema, clique em Novo  ANDROID_HOME   No campo Valor da variável, insira o seu caminho da instalação do seu ANDROID SDK   Se você não alterou o caminho durante a instalação, ele será parecido com isso C:\Users&amp;lt;Seu Usuario&amp;gt;\AppData\Local\Android\sdk</description>
+    </item>
+    
+    <item>
+      <title>Variaveis JAVA</title>
+      <link>https://pluggedcomputing.gitlab.io/post/20190821_environment_java/</link>
+      <pubDate>Wed, 21 Aug 2019 00:00:00 +0000</pubDate>
+      <author>matheus.barbosa@dcx.ufpb.br (Matheus Barbosa de Oliveira)</author>
+      <guid>https://pluggedcomputing.gitlab.io/post/20190821_environment_java/</guid>
+      <description>Os exemplos utilizados aqui serão baseados no Windows 10. Caso seu sistema operacional seja Linux ou macOS, você pode consultar os seguintes tutoriais: Linux | macOS
+ Localize o diretório de instalação Java   Se você não alterou o caminho durante a instalação, ele será parecido com isso C:\Program Files\Java\jdk1.8.0_65
+ Vá para Painel de controle &amp;gt; Sistema &amp;gt; Configurações avançadas do sistema Clique no botão Variáveis de ambiente Sob Variáveis do sistema, clique em Novo No campo Nome da variável insira:  JAVA_HOME se você instalou o JDK (Kit de desenvolvimento Java)   No campo Valor da variável, insira o seu caminho da instalação do JDK (Passo 1).</description>
+    </item>
+    
+    <item>
+      <title>Pré Requisitos</title>
+      <link>https://pluggedcomputing.gitlab.io/post/20190820_pre_requirements/</link>
+      <pubDate>Tue, 20 Aug 2019 00:00:00 +0000</pubDate>
+      <author>matheus.barbosa@dcx.ufpb.br (Matheus Barbosa de Oliveira)</author>
+      <guid>https://pluggedcomputing.gitlab.io/post/20190820_pre_requirements/</guid>
+      <description>Para configurar o ambiente para esse projeto, você vai precisar ter instalado alguns aplicativos:
+ Instale o Chocolatey e as demais dependências: Baixar o chocolatey SDK Android (Android Studio download ou Command line tools only): Baixar o SDK Android JAVA JDK 8: Baixar o JDK 8 Node JS: Baixar o Node JS Git: Baixar o Git Visual Studio Code: Baixar o VS Code Yarn: Baixar o Yarn   Caso tenha baixado o Android Studio execute mais esses passos adicionais:  Abra o Android Studio &amp;gt; SDK Manager &amp;gt; SDK Plataforms.</description>
+    </item>
+    
+  </channel>
+</rss>
