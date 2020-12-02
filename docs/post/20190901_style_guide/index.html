@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Integração Prettier &#43; ESLint &#43; Airbnb Style Guide &#43; EditorConfig no VSCode</title>
+  <meta property="og:title" content="Integração Prettier &#43; ESLint &#43; Airbnb Style Guide &#43; EditorConfig no VSCode" />
+  <meta name="twitter:title" content="Integração Prettier &#43; ESLint &#43; Airbnb Style Guide &#43; EditorConfig no …" />
+  <meta name="description" content="Nesse guia vamos te ajudar a configurar algumas bibliotecas e estrenções que vão te ajudar na hora de padronizar e organizar o codigo dos seus projeto.
+ Como referencia, utilizamos o Visual Studio Code como IDE e o Yarn para instalar as dependencia.
+ Ferramentas ESLint  ESLint , é um programa que percorre seu código e o analisa quanto a possíveis erros. A extensão é altamente configurável, com uma variedade de opções internas para combinar com o guia de estilo da sua empresa.">
+  <meta property="og:description" content="Nesse guia vamos te ajudar a configurar algumas bibliotecas e estrenções que vão te ajudar na hora de padronizar e organizar o codigo dos seus projeto.
+ Como referencia, utilizamos o Visual Studio Code como IDE e o Yarn para instalar as dependencia.
+ Ferramentas ESLint  ESLint , é um programa que percorre seu código e o analisa quanto a possíveis erros. A extensão é altamente configurável, com uma variedade de opções internas para combinar com o guia de estilo da sua empresa.">
+  <meta name="twitter:description" content="Nesse guia vamos te ajudar a configurar algumas bibliotecas e estrenções que vão te ajudar na hora de padronizar e organizar o codigo dos seus projeto.
+ Como referencia, utilizamos o Visual Studio …">
+  <meta name="author" content="Matheus Barbosa de Oliveira"/>
+  <link href='https://pluggedcomputing.github.io/pages/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="https://pluggedcomputing.github.io/pages/img/logo.png" />
+  <meta name="twitter:image" content="https://pluggedcomputing.github.io/pages/img/logo.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@barbosamaatheus" />
+  <meta name="twitter:creator" content="@barbosamaatheus" />
+  <meta property="og:url" content="https://pluggedcomputing.github.io/post/20190901_style_guide/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Plugged Computing" />
+
+  <meta name="generator" content="Hugo 0.73.0" />
+  <link rel="canonical" href="https://pluggedcomputing.github.io/post/20190901_style_guide/" />
+  <link rel="alternate" href="https://pluggedcomputing.github.io/pages/index.xml" type="application/rss+xml" title="Plugged Computing">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://pluggedcomputing.github.io/pages/css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://pluggedcomputing.github.io/pages/css/pygment_highlights.css" />
+  <link rel="stylesheet" href="https://pluggedcomputing.github.io/pages/css/highlight.min.css" />
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://pluggedcomputing.github.io/pages/">Plugged Computing</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="https://pluggedcomputing.github.io/pages/post">Blog</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">Configurações de Ambiente</a>
+              <div class="navlinks-children">
+                
+                  <a href="https://pluggedcomputing.github.io/pages/page/environment_settings/pre_requirements">Pré Requisitos</a>
+                
+                  <a href="https://pluggedcomputing.github.io/pages/page/environment_settings/environment_java">Java JDK</a>
+                
+                  <a href="https://pluggedcomputing.github.io/pages/page/environment_settings/environment_android">Android SDK</a>
+                
+                  <a href="https://pluggedcomputing.github.io/pages/page/environment_settings/environment_others">Outras Variaveis</a>
+                
+                  <a href="https://pluggedcomputing.github.io/pages/page/environment_settings/installing_dependencies">Instalando Dependencias</a>
+                
+                  <a href="https://pluggedcomputing.github.io/pages/page/environment_settings/testing">Testando</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">Contribuições</a>
+              <div class="navlinks-children">
+                
+                  <a href="https://pluggedcomputing.github.io/pages/page/contribuitions/download_the_project">Baixando o Projeto</a>
+                
+                  <a href="https://pluggedcomputing.github.io/pages/page/contribuitions/starting_emulator">Iniciando Emulador</a>
+                
+                  <a href="https://pluggedcomputing.github.io/pages/page/contribuitions/making_changes">Realizando alterações</a>
+                
+                  <a href="https://pluggedcomputing.github.io/pages/page/contribuitions/create_merge_request">Criando Merge Requests</a>
+                
+                  <a href="https://pluggedcomputing.github.io/pages/page/contribuitions/good_habits">Boas Práticas</a>
+                
+              </div>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        
+          <a title="Plugged Computing" href="https://pluggedcomputing.github.io/pages/">
+            <img class="avatar-img" src="https://pluggedcomputing.github.io/pages/img/logo.png" alt="Plugged Computing" />
+          </a>
+        
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+
+
+    
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>Integração Prettier &#43; ESLint &#43; Airbnb Style Guide &#43; EditorConfig no VSCode</h1>
+                
+                
+                  <span class="post-meta">
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>Nesse guia vamos te ajudar a configurar algumas bibliotecas e estrenções que vão te ajudar na hora de padronizar e organizar o codigo dos seus projeto.</p>
+<blockquote>
+<p>Como referencia, utilizamos o Visual Studio Code como IDE e o Yarn para instalar as dependencia.</p>
+</blockquote>
+<h2 id="ferramentas">Ferramentas</h2>
+<h3 id="eslint-eslinthttpsfreeiconsiolaravelpublicuploadsiconspng11436511531536298177-128png">ESLint <img src="https://freeicons.io/laravel/public/uploads/icons/png/11436511531536298177-128.png" alt="ESLint"></h3>
+<p>ESLint , é um programa que percorre seu código e o analisa quanto a possíveis erros. A extensão é altamente configurável, com uma variedade de opções internas para combinar com o guia de estilo da sua empresa. Ele pode destacar erros enquanto você digita seu editor, além de exibir uma lista detalhada de erros no seu console.</p>
+<h3 id="prettier-prettierhttpsfreeiconsiolaravelpublicuploadsiconspng11490474241551942136-128png">Prettier <img src="https://freeicons.io/laravel/public/uploads/icons/png/11490474241551942136-128.png" alt="Prettier"></h3>
+<p>Muitas vezes não escrevemos o código mais bonito, mas com o Prettier não é preciso mais se preocupar com isso. Após uma longa sessão de desenvolvimento, é só salvar seu arquivo e depois <strong>puf</strong> ele formata magicamente o código automaticamente!</p>
+<p><img src="https://miro.medium.com/max/1420/1*BTj6MICTzE_q8vdtgv_b5w.gif" alt="dif"></p>
+<h3 id="editorconfig-editorconfighttpseditorconfigorglogopng">EditorConfig <img src="https://editorconfig.org/logo.png" alt="EditorConfig"></h3>
+<p>O EditorConfig ajuda a manter estilos de codificação consistentes para vários desenvolvedores que trabalham no mesmo projeto em vários editores e IDEs. O projeto EditorConfig consiste em um formato de arquivo para definir estilos de codificação e uma coleção de plugins de editor de texto que permitem aos editores ler o formato do arquivo e aderir aos estilos definidos. Os arquivos EditorConfig são facilmente legíveis e funcionam bem com os sistemas de controle de versão.</p>
+<h2 id="configurando-no-vscode">Configurando no VSCode</h2>
+<ol>
+<li>No VSCode, baixe as extensões: <a href="https://github.com/Microsoft/vscode-eslint.git">ESLint</a>, <a href="https://github.com/prettier/prettier-vscode">Prettier</a> e <a href="https://github.com/editorconfig/editorconfig-vscode">EditorConfig</a>.</li>
+<li>Instale as bibliotecas <strong>ESLint</strong> e <strong>Prettier</strong> no seu projeto. Para isso, no diretório raiz do seu projeto, execute:</li>
+</ol>
+<p><code>&gt; yarn add --dev eslint prettier</code></p>
+<ol start="3">
+<li>Instale a configuração do <a href="https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb">Airbnb</a>. Se você estiver usando o <strong>npm 5+</strong>, poderá executar este atalho para instalar a configuração e todas as suas dependências:</li>
+</ol>
+<p><code>&gt; npx install-peerdeps --dev eslint-config-airbnb</code></p>
+<ol start="4">
+<li>Instale <a href="https://github.com/prettier/eslint-config-prettier">eslint-config-prettier</a> (desativa a formatação para ESLint) e <a href="github.com/prettier/eslint-plugin-prettier">eslint-plugin-prettier</a> (permite que o ESLint mostre erros de formatação enquanto digitamos)</li>
+</ol>
+<p><code>&gt; yarn add --dev eslint-config-prettier eslint-plugin-prettier</code></p>
+<ol start="5">
+<li>Crie um arquivo <strong>.eslintrc.json</strong> no diretório raiz do seu projeto:</li>
+</ol>
+<pre><code>{
+  &quot;extends&quot;: [&quot;airbnb&quot;, &quot;prettier&quot;],
+  &quot;plugins&quot;: [&quot;prettier&quot;],
+  &quot;rules&quot;: {
+    &quot;prettier/prettier&quot;: [&quot;error&quot;]
+  },
+}
+</code></pre><ol start="6">
+<li>O proximo passo é garantir que a formatação do Prettier seja feita ao falvar um arquiivo. Insira <strong><em>&ldquo;editor.formatOnSave&rdquo;: true</em></strong> nas configurações do usuário no VSCode.</li>
+</ol>
+<blockquote>
+<p>Para abrir as configurações de usuario, use o atalho <code>Ctrl + Shift + P</code> e busque por: &ldquo;<em>Preferences: Open Settings (JSON)</em>&rdquo;</p>
+</blockquote>
+<ol start="7">
+<li>Crie um arquivo <strong>.editorconfig</strong> no diretório raiz do seu projeto:</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-yml" data-lang="yml">root<span class="w"> </span>=<span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="p">[</span><span class="cp">*]</span><span class="w">
+</span><span class="w"></span>indent_style<span class="w"> </span>=<span class="w"> </span>space<span class="w">
+</span><span class="w"></span>indent_size<span class="w"> </span>=<span class="w"> </span><span class="m">2</span><span class="w">
+</span><span class="w"></span>end_of_line<span class="w"> </span>=<span class="w"> </span>lf<span class="w">
+</span><span class="w"></span>charset<span class="w"> </span>=<span class="w"> </span>utf<span class="m">-8</span><span class="w">
+</span><span class="w"></span>trim_trailing_whitespace<span class="w"> </span>=<span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w"></span>insert_final_newline<span class="w"> </span>=<span class="w"> </span><span class="kc">false</span><span class="w">
+</span></code></pre></div><p><strong>Parabéns, você conseguiu!</strong></p>
+<p>Seguindo todos esse passos, o seu VSCode deve esta pronto para detectar erros mais cedo, e junto com os formatadores ajudará a manter a consistência em todo o codigo fonte. Com essas extensões trabalhando lado a lado, será possivel criar um código limpo e sustentável. Seu chefe e seus colegas vão te agradecer.</p>
+<h2 id="referencias">Referencias</h2>
+<p>Integrating Prettier + ESLint + Airbnb Style Guide in VSCode. (20180). Disponivel em: <a href="https://blog.echobind.com/integrating-prettier-eslint-airbnb-style-guide-in-vscode-47f07b5d7d6a">https://blog.echobind.com/integrating-prettier-eslint-airbnb-style-guide-in-vscode-47f07b5d7d6a</a>.</p>
+
+      </article>
+
+      <ul class="pager blog-pager">
+        
+          <li class="previous">
+            <a href="https://pluggedcomputing.github.io/pages/post/20190830_good_habits/" data-toggle="tooltip" data-placement="top" title="Boas Praticas">&larr; </a>
+          </li>
+        
+        
+          <li class="next">
+            <a href="https://pluggedcomputing.github.io/pages/post/20190930_extensions_vscode/" data-toggle="tooltip" data-placement="top" title="Extensões Uteis para o Visual Studio Code."> &rarr;</a>
+          </li>
+        
+      </ul>
+
+      
+        
+      
+
+    </div>
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:matheus.barbosa@dcx.ufpb.br" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://gitlab.com/barbosamaatheus" title="GitLab">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/barbosamaatheus" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/barbosamaatheus" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/barbosamaatheus" title="Instagram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="https://pluggedcomputing.github.io/pages/index.xml" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          Matheus Barbosa de Oliveira
+          &nbsp;&bull;&nbsp;
+          2020
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://pluggedcomputing.github.io/pages/">Plugged Computing</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha384-dq1/gEHSxPZQ7DdrM82ID4YVol9BYyU7GbWlIwnwyPzotpoc57wDw/guX8EaYGPx" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://pluggedcomputing.github.io/pages/js/main.js"></script>
+<script src="https://pluggedcomputing.github.io/pages/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> renderMathInElement(document.body); </script>
+
+
+
+
+
+  </body>
+</html>
+

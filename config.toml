@@ -1,7 +1,7 @@
-baseurl = "https://pluggedcomputing.gitlab.io"
+baseurl = "https://pluggedcomputing.github.io/pages/"
 contentdir    = "content"
 layoutdir     = "layouts"
-publishdir    = "public"
+publishdir    = "docs"
 title = "Plugged Computing"
 canonifyurls  = true
 

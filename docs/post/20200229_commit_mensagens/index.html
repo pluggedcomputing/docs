@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Como escrever mensagens de commits no Git</title>
+  <meta property="og:title" content="Como escrever mensagens de commits no Git" />
+  <meta name="twitter:title" content="Como escrever mensagens de commits no Git" />
+  <meta name="description" content="Esse texto é uma adaptação de https://www.lucascaton.com.br/2017/10/16/como-escrever-mensagens-de-commits-no-git/
+ Devemos escrever a mensagem no presente? No futuro? Em português? Em inglês? São infinitas as formas as quais uma mensagem de commit pode ser escrita.
+Sabemos que o ingles é fundamental na nossa profissão e existem inumeras vantagens de se programar em ingles. Porém no nosso projeto, apenas o codigo é obrigatorio ser em ingles, as mensagens de commit são livres de indiomas e você pode escolher o que preferir.">
+  <meta property="og:description" content="Esse texto é uma adaptação de https://www.lucascaton.com.br/2017/10/16/como-escrever-mensagens-de-commits-no-git/
+ Devemos escrever a mensagem no presente? No futuro? Em português? Em inglês? São infinitas as formas as quais uma mensagem de commit pode ser escrita.
+Sabemos que o ingles é fundamental na nossa profissão e existem inumeras vantagens de se programar em ingles. Porém no nosso projeto, apenas o codigo é obrigatorio ser em ingles, as mensagens de commit são livres de indiomas e você pode escolher o que preferir.">
+  <meta name="twitter:description" content="Esse texto é uma adaptação de https://www.lucascaton.com.br/2017/10/16/como-escrever-mensagens-de-commits-no-git/
+ Devemos escrever a mensagem no presente? No futuro? Em português? Em inglês? São …">
+  <meta name="author" content="Matheus Barbosa de Oliveira"/>
+  <link href='https://pluggedcomputing.github.io/pages/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="https://pluggedcomputing.github.io/pages/img/logo.png" />
+  <meta name="twitter:image" content="https://pluggedcomputing.github.io/pages/img/logo.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@barbosamaatheus" />
+  <meta name="twitter:creator" content="@barbosamaatheus" />
+  <meta property="og:url" content="https://pluggedcomputing.github.io/post/20200229_commit_mensagens/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Plugged Computing" />
+
+  <meta name="generator" content="Hugo 0.73.0" />
+  <link rel="canonical" href="https://pluggedcomputing.github.io/post/20200229_commit_mensagens/" />
+  <link rel="alternate" href="https://pluggedcomputing.github.io/pages/index.xml" type="application/rss+xml" title="Plugged Computing">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://pluggedcomputing.github.io/pages/css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://pluggedcomputing.github.io/pages/css/pygment_highlights.css" />
+  <link rel="stylesheet" href="https://pluggedcomputing.github.io/pages/css/highlight.min.css" />
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://pluggedcomputing.github.io/pages/">Plugged Computing</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="https://pluggedcomputing.github.io/pages/post">Blog</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">Configurações de Ambiente</a>
+              <div class="navlinks-children">
+                
+                  <a href="https://pluggedcomputing.github.io/pages/page/environment_settings/pre_requirements">Pré Requisitos</a>
+                
+                  <a href="https://pluggedcomputing.github.io/pages/page/environment_settings/environment_java">Java JDK</a>
+                
+                  <a href="https://pluggedcomputing.github.io/pages/page/environment_settings/environment_android">Android SDK</a>
+                
+                  <a href="https://pluggedcomputing.github.io/pages/page/environment_settings/environment_others">Outras Variaveis</a>
+                
+                  <a href="https://pluggedcomputing.github.io/pages/page/environment_settings/installing_dependencies">Instalando Dependencias</a>
+                
+                  <a href="https://pluggedcomputing.github.io/pages/page/environment_settings/testing">Testando</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">Contribuições</a>
+              <div class="navlinks-children">
+                
+                  <a href="https://pluggedcomputing.github.io/pages/page/contribuitions/download_the_project">Baixando o Projeto</a>
+                
+                  <a href="https://pluggedcomputing.github.io/pages/page/contribuitions/starting_emulator">Iniciando Emulador</a>
+                
+                  <a href="https://pluggedcomputing.github.io/pages/page/contribuitions/making_changes">Realizando alterações</a>
+                
+                  <a href="https://pluggedcomputing.github.io/pages/page/contribuitions/create_merge_request">Criando Merge Requests</a>
+                
+                  <a href="https://pluggedcomputing.github.io/pages/page/contribuitions/good_habits">Boas Práticas</a>
+                
+              </div>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        
+          <a title="Plugged Computing" href="https://pluggedcomputing.github.io/pages/">
+            <img class="avatar-img" src="https://pluggedcomputing.github.io/pages/img/logo.png" alt="Plugged Computing" />
+          </a>
+        
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+
+
+    
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>Como escrever mensagens de commits no Git</h1>
+                
+                
+                  <span class="post-meta">
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <blockquote>
+<p>Esse texto é uma adaptação de <a href="https://www.lucascaton.com.br/2017/10/16/como-escrever-mensagens-de-commits-no-git/">https://www.lucascaton.com.br/2017/10/16/como-escrever-mensagens-de-commits-no-git/</a></p>
+</blockquote>
+<p>Devemos escrever a mensagem no presente? No futuro? Em português? Em inglês? São infinitas as formas as quais uma mensagem de commit pode ser escrita.</p>
+<p>Sabemos que o ingles é fundamental na nossa profissão e existem inumeras <a href="https://www.lucascaton.com.br/2015/05/22/8-motivos-pra-programar-em-ingles/">vantagens de se programar em ingles</a>. Porém no nosso projeto, apenas o codigo é obrigatorio ser em ingles, as mensagens de commit são livres de indiomas e você pode escolher o que preferir. Remendamos que faça em português mesmo.</p>
+<p>Apesar de a maioria dos desenvolvedores escrever boas mensagens, não podemos generalizar: sempre tem alguém para provar que a zueira não tem limites estragar a estatística.</p>
+<p><img src="https://www.lucascaton.com.br/assets/images/2017/10/git-commits-messages.png" alt="imagem"></p>
+<h3 id="por-que-uma-boa-mensagem-importa">Por que uma boa mensagem importa?</h3>
+<p>Alguns motivos:</p>
+<ul>
+<li>Caso um bug seja introduzido, uma boa mensagem de commit facilita a identificação de onde/quando isso aconteceu;</li>
+<li>Se você reverter um commit, a mensagem será Revert &ldquo;mensagem original&rdquo;, deixando claro o que está sendo revertido;</li>
+<li>Boas mensagens se tornam útias ao exibir listas de commits através de comandos como git blame, git log, git shortlog, etc;</li>
+<li>Facilita a criação de changelog automatico;</li>
+</ul>
+<h3 id="como-escrever-boas-mensagens">Como escrever boas mensagens?</h3>
+<p>O correto é escrever na forma imperativa. Ou seja, a sua mensagem precisa sempre estar apta a completar a seguinte frase:<br>
+“Se aplicado, esse commit vai <strong>seu resumo aqui</strong>”</p>
+<h3 id="exemplos">Exemplos:</h3>
+<p>✅ Se aplicado, esse commit vai <strong>Refatorar o subsistema X para facilitar a leitura</strong><br>
+✅ Se aplicado, esse commit vai <strong>Atualizar a documentação de introdução</strong><br>
+✅ Se aplicado, esse commit vai <strong>Remover métodos obsoletos</strong><br>
+✅ Se aplicado, esse commit vai <strong>Release version 1.0.0</strong><br>
+✅ Se aplicado, esse commit vai <strong>Mesclar solicitação de recebimento nº 123 do usuário / filial</strong></p>
+<p>Note como isso não fica legal escrevendo de forma não-imperativa:</p>
+<p>❌ Se aplicado, esse commit vai <strong>Corrigido o erro com Y</strong><br>
+❌ Se aplicado, esse commit vai <strong>Mudando o comportamento de X</strong><br>
+❌ Se aplicado, esse commit vai <strong>Mais correções para coisas quebradas</strong><br>
+❌ Se aplicado, esse commit vai <strong>Novos métodos API agradáveis</strong></p>
+<blockquote>
+<p>Não é preciso adicionar um ponto no final da mensagem.</p>
+</blockquote>
+<p>Além de mensagens boas e intuitivas, é precisso seguir o padrão de commit do nosso projeto.</p>
+<p>Acesse: <a href="https://pluggedcomputing.gitlab.io/post/20200123_commit_lint/">Padronização das mensagens de commit</a></p>
+
+      </article>
+
+      <ul class="pager blog-pager">
+        
+          <li class="previous">
+            <a href="https://pluggedcomputing.github.io/pages/post/20200123_commit_lint/" data-toggle="tooltip" data-placement="top" title="Padronização das mensagens de commit">&larr; </a>
+          </li>
+        
+        
+          <li class="next">
+            <a href="https://pluggedcomputing.github.io/pages/post/20200322_integrations_tests/" data-toggle="tooltip" data-placement="top" title="Como construir testes de integração no backend Node.JS"> &rarr;</a>
+          </li>
+        
+      </ul>
+
+      
+        
+      
+
+    </div>
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:matheus.barbosa@dcx.ufpb.br" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://gitlab.com/barbosamaatheus" title="GitLab">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/barbosamaatheus" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/barbosamaatheus" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/barbosamaatheus" title="Instagram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="https://pluggedcomputing.github.io/pages/index.xml" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          Matheus Barbosa de Oliveira
+          &nbsp;&bull;&nbsp;
+          2020
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://pluggedcomputing.github.io/pages/">Plugged Computing</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha384-dq1/gEHSxPZQ7DdrM82ID4YVol9BYyU7GbWlIwnwyPzotpoc57wDw/guX8EaYGPx" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://pluggedcomputing.github.io/pages/js/main.js"></script>
+<script src="https://pluggedcomputing.github.io/pages/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> renderMathInElement(document.body); </script>
+
+
+
+
+
+  </body>
+</html>
+

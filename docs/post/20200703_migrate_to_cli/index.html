@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Migrar Expo para ReactNative CLI</title>
+  <meta property="og:title" content="Migrar Expo para ReactNative CLI" />
+  <meta name="twitter:title" content="Migrar Expo para ReactNative CLI" />
+  <meta name="description" content="1: Configuração de ambiente e instalação do ReactNative CLI, seguindo os passos em https://reactnative.dev/docs/0.60/getting-started 2: Criar novo projeto ReactNative CLI com o comando npx react-native init nome_projeto 3: Copiar os arquivos src, App.js e para o arquivo package.json siga as instruções:  Copie as dependências dependencies e devDependencies do arquivo package.json do projeto em expo para o projeto em cli.   Remova &quot;react-native&quot;: &quot;https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz&quot; e deixe apenas &quot;react-native&quot;: &quot;0.62.2&quot;  4: Execute o comando npm install para baixar as dependências 5: Copiar o arquivo commitlint.">
+  <meta property="og:description" content="1: Configuração de ambiente e instalação do ReactNative CLI, seguindo os passos em https://reactnative.dev/docs/0.60/getting-started 2: Criar novo projeto ReactNative CLI com o comando npx react-native init nome_projeto 3: Copiar os arquivos src, App.js e para o arquivo package.json siga as instruções:  Copie as dependências dependencies e devDependencies do arquivo package.json do projeto em expo para o projeto em cli.   Remova &quot;react-native&quot;: &quot;https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz&quot; e deixe apenas &quot;react-native&quot;: &quot;0.62.2&quot;  4: Execute o comando npm install para baixar as dependências 5: Copiar o arquivo commitlint.">
+  <meta name="twitter:description" content="1: Configuração de ambiente e instalação do ReactNative CLI, seguindo os passos em https://reactnative.dev/docs/0.60/getting-started 2: Criar novo projeto ReactNative CLI com o comando npx …">
+  <meta name="author" content="Matheus Barbosa de Oliveira"/>
+  <link href='https://pluggedcomputing.github.io/pages/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="https://pluggedcomputing.github.io/pages/img/logo.png" />
+  <meta name="twitter:image" content="https://pluggedcomputing.github.io/pages/img/logo.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@barbosamaatheus" />
+  <meta name="twitter:creator" content="@barbosamaatheus" />
+  <meta property="og:url" content="https://pluggedcomputing.github.io/post/20200703_migrate_to_cli/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Plugged Computing" />
+
+  <meta name="generator" content="Hugo 0.73.0" />
+  <link rel="canonical" href="https://pluggedcomputing.github.io/post/20200703_migrate_to_cli/" />
+  <link rel="alternate" href="https://pluggedcomputing.github.io/pages/index.xml" type="application/rss+xml" title="Plugged Computing">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://pluggedcomputing.github.io/pages/css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://pluggedcomputing.github.io/pages/css/pygment_highlights.css" />
+  <link rel="stylesheet" href="https://pluggedcomputing.github.io/pages/css/highlight.min.css" />
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://pluggedcomputing.github.io/pages/">Plugged Computing</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="https://pluggedcomputing.github.io/pages/post">Blog</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">Configurações de Ambiente</a>
+              <div class="navlinks-children">
+                
+                  <a href="https://pluggedcomputing.github.io/pages/page/environment_settings/pre_requirements">Pré Requisitos</a>
+                
+                  <a href="https://pluggedcomputing.github.io/pages/page/environment_settings/environment_java">Java JDK</a>
+                
+                  <a href="https://pluggedcomputing.github.io/pages/page/environment_settings/environment_android">Android SDK</a>
+                
+                  <a href="https://pluggedcomputing.github.io/pages/page/environment_settings/environment_others">Outras Variaveis</a>
+                
+                  <a href="https://pluggedcomputing.github.io/pages/page/environment_settings/installing_dependencies">Instalando Dependencias</a>
+                
+                  <a href="https://pluggedcomputing.github.io/pages/page/environment_settings/testing">Testando</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">Contribuições</a>
+              <div class="navlinks-children">
+                
+                  <a href="https://pluggedcomputing.github.io/pages/page/contribuitions/download_the_project">Baixando o Projeto</a>
+                
+                  <a href="https://pluggedcomputing.github.io/pages/page/contribuitions/starting_emulator">Iniciando Emulador</a>
+                
+                  <a href="https://pluggedcomputing.github.io/pages/page/contribuitions/making_changes">Realizando alterações</a>
+                
+                  <a href="https://pluggedcomputing.github.io/pages/page/contribuitions/create_merge_request">Criando Merge Requests</a>
+                
+                  <a href="https://pluggedcomputing.github.io/pages/page/contribuitions/good_habits">Boas Práticas</a>
+                
+              </div>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        
+          <a title="Plugged Computing" href="https://pluggedcomputing.github.io/pages/">
+            <img class="avatar-img" src="https://pluggedcomputing.github.io/pages/img/logo.png" alt="Plugged Computing" />
+          </a>
+        
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+
+
+    
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>Migrar Expo para ReactNative CLI</h1>
+                
+                
+                  <span class="post-meta">
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <h2 id="1-configuração-de-ambiente-e-instalação-do-reactnative-cli-seguindo-os-passos-em-httpsreactnativedevdocs060getting-started">1: Configuração de ambiente e instalação do ReactNative CLI, seguindo os passos em <a href="https://reactnative.dev/docs/0.60/getting-started">https://reactnative.dev/docs/0.60/getting-started</a></h2>
+<h2 id="2-criar-novo-projeto-reactnative-cli-com-o-comando-npx-react-native-init-nome_projeto">2: Criar novo projeto ReactNative CLI com o comando <code>npx react-native init nome_projeto</code></h2>
+<h2 id="3-copiar-os-arquivos-src-appjs-e-para-o-arquivo-packagejson-siga-as-instruções">3: Copiar os arquivos <code>src</code>, <code>App.js</code> e para o arquivo <code>package.json</code> siga as instruções:</h2>
+<ul>
+<li>Copie as dependências <code>dependencies</code> e <code>devDependencies</code> do arquivo <code>package.json</code> do projeto em expo para o projeto em cli.</li>
+</ul>
+<ul>
+<li>Remova <code>&quot;react-native&quot;: &quot;https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz&quot;</code> e deixe apenas <code>&quot;react-native&quot;: &quot;0.62.2&quot;</code></li>
+</ul>
+<h2 id="4-execute-o-comando-npm-install-para-baixar-as-dependências">4: Execute o comando npm install para baixar as dependências</h2>
+<h2 id="5-copiar-o-arquivo-commitlintconfigjs-do-projeto-anterior-para-o-novo-projeto">5: Copiar o arquivo <code>commitlint.config.js</code> do projeto anterior para o novo projeto.</h2>
+<h2 id="6-no-arquivo-packagejson-faça-as-seguintes-alterações-depois-execute-o-comando-npm-install">6: No arquivo <code>package.json</code> faça as seguintes alterações, depois execute o comando <code>npm install</code>:</h2>
+<ul>
+<li>
+<p>substiuição</p>
+<ul>
+<li>
+<p>&ldquo;expo-linear-gradient&rdquo;: &ldquo;~8.0.0&rdquo; -&gt; &ldquo;react-native-linear-gradient&rdquo;: &ldquo;^2.5.6&rdquo;</p>
+</li>
+<li>
+<p>&ldquo;lottie-react-native&rdquo;: &ldquo;~2.6.1&rdquo; -&gt; &ldquo;lottie-ios&rdquo;: &ldquo;3.1.3&rdquo;,
+&ldquo;lottie-react-native&rdquo;: &ldquo;^3.4.0&rdquo;</p>
+</li>
+</ul>
+</li>
+<li>
+<p>remoção</p>
+<ul>
+<li>
+<p>&ldquo;@expo/vector-icons&rdquo;: &ldquo;^10.0.6&rdquo;</p>
+</li>
+<li>
+<p>&ldquo;expo&rdquo;: &ldquo;~36.0.0&rdquo;</p>
+</li>
+<li>
+<p>&ldquo;expo-constants&rdquo;: &ldquo;~8.0.0&rdquo;</p>
+</li>
+<li>
+<p>&ldquo;expo-font&rdquo;: &ldquo;~8.0.0&rdquo;</p>
+</li>
+<li>
+<p>&ldquo;babel-preset-expo&rdquo;: &ldquo;~8.0.0&rdquo;,</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>
+<p>adicionar</p>
+<ul>
+<li>&ldquo;@react-native-community/async-storage&rdquo;: &ldquo;^1.11.0&rdquo;</li>
+</ul>
+</li>
+</ul>
+<h2 id="7-no-arquivo-appjs-copie-e-cole-o-codigo-abaixo">7: No arquivo <code>App.js</code> copie e cole o codigo abaixo:</h2>
+<pre><code>import React from 'react';
+
+import {setCustomTextInput, setCustomText} from 'react-native-global-props';
+
+import Routes from './src/routes';
+import {general} from './src/styles';
+
+const customTextInputProps = {
+style: general.customProps,
+};
+
+const customTextProps = {
+style: general.customProps,
+};
+
+setCustomTextInput(customTextInputProps);
+setCustomText(customTextProps);
+
+const App = () =&gt; {
+return &lt;Routes /&gt;;
+};
+
+export default App;
+</code></pre>
+<h2 id="8-no-indexjs-dos-componentes-loginorregister-e-screenabout-faça">8: No <code>index.js</code> dos componentes <code>LoginOrRegister</code> e <code>ScreenAbout</code> faça:</h2>
+<ul>
+<li>import {LinearGradient} from &lsquo;expo-linear-gradient&rsquo; -&gt; import LinearGradient from &lsquo;react-native-linear-gradient&rsquo;</li>
+</ul>
+<h2 id="9-no-indexjs-dos-componentes-congratulations-e-levelselection-faça">9: No <code>index.js</code> dos componentes <code>Congratulations</code> e <code>LevelSelection</code> faça:</h2>
+<ul>
+<li>import {&hellip;, AsyncStorage, &hellip;} -&gt; import AsyncStorage from &lsquo;@react-native-community/async-storage&rsquo;</li>
+</ul>
+<h2 id="10-no-indexjs-do-componete-exercises-faça">10: No <code>index.js</code> do componete <code>Exercises</code> faça:</h2>
+<ul>
+<li>impot {MaterialCommunityIcons} from &lsquo;@expo/vector-icons&rsquo; -&gt; import Icon from &lsquo;react-native-vector-icons/MaterialCommunityIcons&rsquo;</li>
+</ul>
+<ul>
+<li>
+<p>Modifique</p>
+<pre><code>&lt;MaterialCommunityIcons name=&quot;lightbulb-on-outline&quot;
+size={general.iconSize.bigger}
+style={styles.icon}
+onPress={handleTips}
+</code></pre><p>Para</p>
+<pre><code>&lt;Icon .. name=&quot;lightbulb-on-outline&quot;
+size={general.iconSize.bigger}
+style={styles.icon}
+onPress={handleTips}./&gt;
+</code></pre></li>
+</ul>
+<ul>
+<li>No terminal execute o comando <code>yarn add react-native-vector-icons</code></li>
+</ul>
+<h2 id="11-instalar-dependência-babel-present-env-com-o-comando-npm-install---save-dev-babelpreset-env">11: Instalar dependência babel present-env com o comando <code>npm install --save-dev @babel/preset-env</code></h2>
+<h2 id="12-adicionar-configuração-para-fonts-faça">12: Adicionar configuração para Fonts faça:</h2>
+<ul>
+<li>
+<p>No terminal na raiz do projeto execute <code>echo &quot;module.exports = {assets: ['./assets/fonts/Poppins'],};&quot; &gt; react-native.config.js</code></p>
+</li>
+<li>
+<p>Na raiz do projeto crie as pastas <code>assets/fonts/Poppins/</code> depois copie e cole o conteudo da pasta <code>src/assets/fonts</code> dentro.</p>
+</li>
+</ul>
+<ul>
+<li>Execute o seguinte codigo no terminal <code>react-native link</code></li>
+</ul>
+<h2 id="13-mudar-versão-minima-do-android-na-pasta-android-no-arquivo-buildgragle-mude-minsdkversion-para-19">13: Mudar versão minima do android, na pasta <code>android</code> no arquivo <code>build.gragle</code> mude minSdkVersion para 19</h2>
+<h2 id="14-para-o-reactnative-funcionar-na-versão-19-do-android-faça-os-seguintes-paços">14: Para o ReactNative funcionar na versão 19 do android, faça os seguintes paços:</h2>
+<ol>
+<li>
+<p>Abra o Android Studio va em <code>File</code> -&gt; <code>open</code> -&gt; <code>va até a pasta do prejeto</code> e depois selecione a pasta <code>android</code></p>
+</li>
+<li>
+<p>Em <code>Gradle Scripts</code> abra o arquivo <code>build.gragle(Module:app)</code></p>
+</li>
+<li>
+<p>Em <code>dependêncies</code> adicione o codigo a baixo, depois aperte em Sync Now</p>
+</li>
+</ol>
+<pre><code> implementation (&quot;com.squareup.okhttp3:okhttp:3.12.12&quot;){
+      force = true //API 19 support
+  }
+  implementation 'com.squareup.okhttp3:logging-interceptor:3.12.12'
+</code></pre><h2 id="15-rodar-o-projeto-com-o-comando-npx-react-native-run-android">15: Rodar o projeto com o comando <code>npx react-native run-android</code></h2>
+<h2 id="16-caso-ocorra-o-erro-da-imagem-a-baixo-execute-o-comando-npx-react-native-start">16: Caso ocorra o erro da imagem a baixo, execute o comando <code>npx react-native start</code></h2>
+<p><img src="https://user-images.githubusercontent.com/5674956/59913382-ab528400-9435-11e9-9215-77fcbd5b9b98.jpeg" alt="Image erro run android"></p>
+
+      </article>
+
+      <ul class="pager blog-pager">
+        
+          <li class="previous">
+            <a href="https://pluggedcomputing.github.io/pages/post/20200322_integrations_tests/" data-toggle="tooltip" data-placement="top" title="Como construir testes de integração no backend Node.JS">&larr; </a>
+          </li>
+        
+        
+      </ul>
+
+      
+        
+      
+
+    </div>
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:matheus.barbosa@dcx.ufpb.br" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://gitlab.com/barbosamaatheus" title="GitLab">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/barbosamaatheus" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/barbosamaatheus" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/barbosamaatheus" title="Instagram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="https://pluggedcomputing.github.io/pages/index.xml" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          Matheus Barbosa de Oliveira
+          &nbsp;&bull;&nbsp;
+          2020
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://pluggedcomputing.github.io/pages/">Plugged Computing</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha384-dq1/gEHSxPZQ7DdrM82ID4YVol9BYyU7GbWlIwnwyPzotpoc57wDw/guX8EaYGPx" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://pluggedcomputing.github.io/pages/js/main.js"></script>
+<script src="https://pluggedcomputing.github.io/pages/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> renderMathInElement(document.body); </script>
+
+
+
+
+
+  </body>
+</html>
+
